@@ -99,7 +99,7 @@ class Media(models.Model):
 		super(Media, self).save()
 	
 class Entry(models.Model):
-	title = models.CharField(max_length=200)
+	title = models.CharField(max_length=200, default='Untitled Post')
 	url = models.URLField(blank=True)
 	slug = models.SlugField(unique_for_date='pub_date')
 	post_type = models.CharField(choices=POST_TYPE_CHOICES, max_length=10, default='articles')
@@ -124,6 +124,11 @@ class Entry(models.Model):
 	def __unicode__(self):
 		return self.title
 
+	def Create_Draft(self):
+	    DraftInstance = Draft(entry=self, title=self.title, slug=self.slug, author=self.author, summary=self.summary, summary_html=self.summary_html, body=self.body, body_html=self.body_html, content_format=self.content_format)
+	    DraftInstance.save()
+	    return DraftInstance
+	
 	def get_absolute_url(self):
 		return "/blog/%s/" % (self.slug)
 			
@@ -140,10 +145,41 @@ class Entry(models.Model):
 			self.body_html = markdown.markdown(smart_unicode(self.body))
 		else:	
 			self.summary_html = self.summary
-			self.body_html = self.body
-						
+			self.body_html = self.body 			
+		
+		self.Create_Draft()
 		super(Entry, self).save(*args, **kwargs)
 
+class Draft(models.Model):
+	entry = models.ForeignKey(Entry)
+	title = models.CharField(max_length=200, default='Untitled Post')
+	last_edit = models.DateTimeField(verbose_name=_("Edit Date"), help_text=_("Last time draft was saved."), auto_now_add=True)
+	slug = models.SlugField(unique_for_date='pub_date')
+	content_format = models.CharField(choices=CONTENT_FORMAT_CHOICES, max_length=25, default='markdown')
+	summary = models.TextField(_('summary'), blank=True)
+	summary_html = models.TextField(blank=True)
+	body = models.TextField(_('body'))
+	body_html = models.TextField()
+	author = models.ForeignKey(User, blank=True)
+	
+	class Meta:
+		db_table = 'replica_drafts'
+		verbose_name_plural = 'drafts'
+		ordering = ('-title',)
+		get_latest_by = 'last_edit'
+
+	def __unicode__(self):
+		return self.title
+	
+	def save(self, *args, **kwargs):			
+		if self.content_format == u'markdown':
+			self.summary_html = markdown.markdown(smart_unicode(self.summary))
+			self.body_html = markdown.markdown(smart_unicode(self.body))
+		else:	
+			self.summary_html = self.summary
+			self.body_html = self.body
+						
+		super(Draft, self).save(*args, **kwargs)
 
 class Page(FlatPage):
 	is_active = models.BooleanField(help_text=_("This should be checked for live Pages."), default=False)

@@ -12,6 +12,9 @@ urlpatterns = patterns('',
 	url(r'^dashboard/nano/$', views.Replica_Nano, name = 'replica-nano'),
 	url(r'^dashboard/edit/(?P<entry_id>\d+)/$', views.ReplicaEdit, name = 'replica-edit'),
 	url(r'^dashboard/delete/(?P<entry_id>\d+)/$', views.ReplicaDelete, name = 'replica-delete'),
+	url(r'^dashboard/drafts/(?P<entry_id>\d+)/$', views.ReplicaDrafts, name = 'replica-drafts'),
+	url(r'^dashboard/drafts/(?P<entry_id>\d+)/(?P<draft_id>\d+)/$', views.ReplicaDraftsView, name = 'replica-draft-view'),
+	url(r'^dashboard/drafts/delete/(?P<draft_id>\d+)/$', views.ReplicaDraftDelete, name = 'replica-draft-delete'),
 	url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'replica/admin/login.html'}),
 	
 	#Articles

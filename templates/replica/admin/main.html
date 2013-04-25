@@ -21,21 +21,23 @@
 		<section id="stats" class="red">
 			<h2>Hello, {{ user }}</h2>
 			<ul class="unstyled">
-				<li>Published: {{ published|length }}</li>
+				<li>Published Entries: {{ published|length }}</li>
 				<li>Ideas: {{ ideas|length }}</li>
+				<li>Pages: {{ pages|length }}</li>
 				<li>Comments: 0</li>
-				<li>Images Uploaded: </li>
 			</ul>			
 		</section>
 		</div><!-- span6 -->
 		
 		<div class="span6">
-			<section id="new-idea" class="orange">
-			<h2>New</h2>
-			<div class="pull-right" id="new-entry">
-				<a href="{% url 'replica-add' %}" class="btn btn-warning">Save</a>
-			</div>
-			<p>Just start writing...</p>
+			<section id="new-idea" class="orange">			
+			<form method="POST" action="{% url 'replica-add' %}" id="create-idea">
+			{% csrf_token %}
+				<input type="submit" class="btn btn-warning pull-right" value="Save">
+				<input class="input-medium" id="id_title" maxlength="200" name="title" placeholder="New Idea" type="text" />
+				{{form.body.errors}}
+				{{form.body}}
+			</form>
 			</section>
 		</div><!-- span6 -->
 	
@@ -48,6 +50,8 @@
 					<a class="pull-right preview" href="{{ idea.get_absolute_url }}">Preview</a>
 					<a href="{% url 'replica-edit' idea.id %}">{{ idea.title }}</a>
 				</li>
+			{% empty %}
+				<li>No ideas yet.</li>	
 			{% endfor %}
 			</ul>
 		</section>
@@ -56,13 +60,24 @@
 		</div><!-- row -->
 	</div><!-- span6 -->
 	
+	<div class="span6">	
+	<section id="pages" class="purple">
+		<h2>Pages</h2>
+		<ul class="unstyled">
+		{% for page in pages %}
+			<li>
+				<a href="{{ page.url }}">{{ page.title }}</a>
+				<span>{{ page.url }}</span>
+			</li>
+		{% empty %}
+		   	<li>None yet.</li>
+		{% endfor %}
+		</ul>			
+	</section>
+	</div><!-- span6 -->
 	
 	<div class="span6">
 		<div class="row">
-			
-			
-			
-			
 			<div class="span6">	
 			<section id="published" class="entries green">				
 				<h2>Published</h2>
@@ -73,6 +88,8 @@
 						<a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
 						<time datetime="{{ entry.pub_date|date:"F jS, Y" }}">{{ entry.pub_date|date:"F jS, Y" }}</time>
 					</li>
+				{% empty %}
+					<li>Nothing published yet.</li>
 				{% endfor %}
 				</ul>
 			</section>

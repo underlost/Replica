@@ -54,7 +54,16 @@ def ReplicaPage(request, slug):
 def ReplicaAdmin(request):
 	published = Entry.objects.published().filter(author=request.user)
 	ideas = Entry.objects.ideas().filter(author=request.user)
-	variables = RequestContext(request, {'published': published, 'ideas': ideas,})
+	pages = Page.objects.all()
+	instance = Entry(author=request.user)
+	f = EntryModelForm(request.POST or None, instance=instance)
+	if f.is_valid():
+		f.save()
+		messages.add_message(
+			request, messages.INFO, 'Idea saved.')
+		return redirect('replica-admin')
+	
+	variables = RequestContext(request, {'form': f, 'published': published, 'ideas': ideas,'pages': pages,})
 	return render_to_response('replica/admin/main.html', variables)
 
 @login_required
@@ -104,7 +113,6 @@ def Replica_Nano(request):
 	variables = {'form': f, 'adding': True}
 	return render(request, 'replica/admin/nano.html', variables)
 
-
 @login_required
 def ReplicaDelete(request, entry_id):
 	entry = get_object_or_404(Entry, pk=entry_id, author=request.user)
@@ -119,6 +127,38 @@ def ReplicaEdit(request, entry_id):
 	f = EntryModelForm(request.POST or None, instance=entry)
 	if f.is_valid():
 		f.save()
+		messages.add_message(
+			request, messages.INFO, 'Entry Saved.')
 		return redirect('replica-admin')
 	variables = RequestContext(request, {'form': f, 'entry': entry, 'adding': False})
 	return render_to_response('replica/admin/create.html', variables)
+
+@login_required
+def ReplicaDrafts(request, entry_id):
+	entry = get_object_or_404(Entry, pk=entry_id, author=request.user)
+	drafts = Draft.objects.all().filter(entry=entry, author=request.user)
+	variables = RequestContext(request, {'entry': entry, 'drafts': drafts,})
+	return render_to_response('replica/admin/drafts.html', variables)
+	
+@login_required
+def ReplicaDraftsView(request, entry_id, draft_id):
+	entry = get_object_or_404(Entry, pk=entry_id, author=request.user)
+	draft = get_object_or_404(Draft, pk=draft_id, author=request.user)
+	f = DraftModelForm(request.POST or None, instance=draft)
+	if f.is_valid():
+		f.save()
+		messages.add_message(
+			request, messages.INFO, 'Draft edited.')
+		return redirect('replica-admin')
+	variables = RequestContext(request, {'form': f, 'entry': entry, 'draft': draft,})
+	return render_to_response('replica/admin/drafts_view.html', variables)
+	
+@login_required
+def ReplicaDraftDelete(request, draft_id):
+	entry = get_object_or_404(Draft, pk=draft_id, author=request.user)
+	if request.method == 'POST':
+		entry.delete()
+		messages.add_message(
+			request, messages.INFO, 'Draft deleted.')
+		return redirect('replica-admin')
+	return render(request, 'replica/admin/delete-confirm.html', {'entry': entry})

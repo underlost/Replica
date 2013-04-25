@@ -24,7 +24,9 @@
  
 <!-- Stylesheets -->	
 <link rel="stylesheet" href="/static/replica/css/global.min.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/static/replica/css/responsive.min.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/static/replica/css/admin.css" type="text/css" media="screen" />
+
 {% block extra %}{% endblock %}
 
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'>
@@ -37,7 +39,7 @@
 <body class="{% block page %}{% endblock %}">
 
 	<nav class="site-nav"><div class="site-nav-branding">
-		<a id="logo" href="{% url 'replica-admin' %}" class="bounce"><img src="/static/img/underlost.png" height="32" width="32" alt="Replica"></a>
+		<a id="logo" href="{% url 'replica-admin' %}" class="bounce"><span>Replica</span></a>
 		
 		<ul class="dropdown-menu">
 		  <li class=""><a href="{% url 'replica-admin' %}">Home</a></li>

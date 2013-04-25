@@ -9,6 +9,7 @@
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#entry" data-toggle="tab">{% if adding %}New{% else %}Edit{% endif %} Entry</a></li>
 		<li><a href="#settings" data-toggle="tab">Settings</a></li>
+		{% if not adding %}<li><a href="{% url 'replica-drafts' entry.id %}">Version History</a></li>{% endif %}
 	</ul>
 
 	<div id="CreateTabContent" class="tab-content">
@@ -27,7 +28,7 @@
 				{% if adding %}
 				<div class="controls">
 				    <input type="submit" class="btn" value="Save">
-				    <span class="help-inline">Remember, the post isnt made public until its switched to published.</span>
+				    <span class="help-inline">Remember, the post isnt made public until it's status is switched to published.</span>
 				</div>
 					 
 				{% else %}
@@ -56,7 +57,7 @@
 				</ul>
 			</fieldset>
 		</div>
-	
+				
 	</div>
 	{% csrf_token %}
 	</form>
