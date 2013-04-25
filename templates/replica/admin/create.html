@@ -1,0 +1,66 @@
+{% extends 'replica/admin/base.html' %}
+
+{% block page %}create dashboard{% endblock %}
+
+{% block content %}
+
+<section id="create">
+	<form method="POST" action="" id="create-entry" class="wide">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#entry" data-toggle="tab">{% if adding %}New{% else %}Edit{% endif %} Entry</a></li>
+		<li><a href="#settings" data-toggle="tab">Settings</a></li>
+	</ul>
+
+	<div id="CreateTabContent" class="tab-content">
+		<div class="tab-pane fade in active" id="entry">
+			<fieldset class="content">				
+				{{form.title}}
+				
+				<h4>Summary</h4>
+				{{form.summary.errors}}
+				{{form.summary}}
+				
+				<h4>Body</h4>
+				{{form.body.errors}}
+				{{form.body}}
+				
+				{% if adding %}
+				<div class="controls">
+				    <input type="submit" class="btn" value="Save">
+				    <span class="help-inline">Remember, the post isnt made public until its switched to published.</span>
+				</div>
+					 
+				{% else %}
+				<a class="btn btn-danger pull-right" href="{% url 'replica-delete' entry.id %}">Delete</a>
+				 <input type="submit" class="btn" value="Edit">
+				{% endif %}
+				
+			</fieldset>	
+		</div>
+		
+		<div class="tab-pane fade" id="settings">
+			<fieldset class="settings">
+				<h2>Settings</h2>
+				<ul class="unstyled">
+					<li><div class="input-prepend"><span class="add-on">url</span>{{form.url}}</div></li>
+					<li>{{form.post_type}} <span class="help-inline">Post Type</span></li>
+					<li>{{form.image}} <span class="help-inline">Optional Image</span></li>
+					<li>{{form.content_format}} <span class="help-inline">Markup</span></li>
+					<li>
+					<h4>Status</h4>
+					{% for radio in form.is_active %}
+					<label class="radio inline">{{ radio }}</label>
+					{% endfor %}
+					
+					</li>
+				</ul>
+			</fieldset>
+		</div>
+	
+	</div>
+	{% csrf_token %}
+	</form>
+	
+	<p>You can also drag this handy {% include "replica/includes/_bookmarklet.html" %} up to your toolbar.</p>
+</section>
+{% endblock %}

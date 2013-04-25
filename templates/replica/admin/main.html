@@ -1,0 +1,85 @@
+{% extends 'replica/admin/base.html' %}
+{% load replicant %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+	
+	<div class="span6">
+		<div class="row">
+		
+		{% if messages %}
+			<div class="span6">
+			{% for message in messages %}
+			<div class="alert {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+			{% endfor %}
+			</div>
+		{% endif %}
+		
+		<div class="span6">	
+		<section id="stats" class="red">
+			<h2>Hello, {{ user }}</h2>
+			<ul class="unstyled">
+				<li>Published: {{ published|length }}</li>
+				<li>Ideas: {{ ideas|length }}</li>
+				<li>Comments: 0</li>
+				<li>Images Uploaded: </li>
+			</ul>			
+		</section>
+		</div><!-- span6 -->
+		
+		<div class="span6">
+			<section id="new-idea" class="orange">
+			<h2>New</h2>
+			<div class="pull-right" id="new-entry">
+				<a href="{% url 'replica-add' %}" class="btn btn-warning">Save</a>
+			</div>
+			<p>Just start writing...</p>
+			</section>
+		</div><!-- span6 -->
+	
+		<div class="span6">
+		<section id="ideas" class="entries blue">		
+			<h2>Ideas</h2>
+			<ul class="unstyled">
+			{% for idea in ideas %}
+				<li>
+					<a class="pull-right preview" href="{{ idea.get_absolute_url }}">Preview</a>
+					<a href="{% url 'replica-edit' idea.id %}">{{ idea.title }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</section>
+		</div><!-- span6 -->
+		
+		</div><!-- row -->
+	</div><!-- span6 -->
+	
+	
+	<div class="span6">
+		<div class="row">
+			
+			
+			
+			
+			<div class="span6">	
+			<section id="published" class="entries green">				
+				<h2>Published</h2>
+				<ul class="unstyled">
+				{% for entry in published %}
+					<li>
+						<a href="{% url 'replica-edit' entry.id %}" class="btn btn-success pull-right"><i class="icon-edit icon-white"></i></a>
+						<a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+						<time datetime="{{ entry.pub_date|date:"F jS, Y" }}">{{ entry.pub_date|date:"F jS, Y" }}</time>
+					</li>
+				{% endfor %}
+				</ul>
+			</section>
+			</div><!-- span6 -->
+	
+		</div><!-- row -->
+	</div><!-- span6 -->
+</div><!-- row -->
+
+{% endblock %}

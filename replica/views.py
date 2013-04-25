@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView)
 
 from .models import Entry, Page
-from .forms import EntryModelForm
+from .forms import EntryModelForm, NanoEntryModelForm
 
 class ReplicaViewMixin(object):
 
@@ -38,21 +38,16 @@ class ReplicaMonthArchiveView(ReplicaViewMixin, MonthArchiveView):
 class ReplicaDayArchiveView(ReplicaViewMixin, DayArchiveView):
     pass
 
-def entry_detail(request, slug):
+def ReplicaEntryDetail(request, year, month, day, slug):
 	entry = get_object_or_404(Entry, slug=slug)
 	variables = RequestContext(request, {'object': entry})
 	return render_to_response(['replica/articles/%s.html' % entry.slug, 'replica/entry_detail.html'], variables)
 
-####Pages
-def Index(request):
-	objects = Entry.objects.published()[:10]
-	variables = RequestContext(request, {'objects': objects,})
-	return render_to_response('replica/entry_index.html', variables)
-
-def page(request, slug):
+def ReplicaPage(request, slug):
 	page = get_object_or_404(Page, slug=slug)
 	variables = RequestContext(request, {'object': page})
 	return render_to_response(['replica/pages/%s.html' % page.slug, 'replica/page.html'], variables)
+
 
 ####Replica Admin
 @login_required
@@ -64,7 +59,6 @@ def ReplicaAdmin(request):
 
 @login_required
 def ReplicaCreate(request):
-
 	if request.method == "POST":
 		instance = Entry(author=request.user)
 		f = EntryModelForm(request.POST or None, instance=instance)
@@ -83,12 +77,33 @@ def ReplicaCreate(request):
 			f = EntryModelForm(initial=initial)
 		else:
 			f = EntryModelForm()
-			
-	entry_add_url = "http://" + Site.objects.get_current().domain + reverse(ReplicaCreate)
-	#bookmarklet = "javascript:window.location.href='%s?url=%22+encodeURIComponent(document.location)+%22&title=%22+encodeURIComponent(document.title)'" % entry_add_url
-	bookmarklet = "javascript:window.location=%22http://underlost.net/replicate/create/?url=%22+encodeURIComponent(document.location)+%22&title=%22+encodeURIComponent(document.title)"
-	variables = {'form': f, "bookmarklet": bookmarklet, 'adding': True}
+	variables = {'form': f, 'adding': True}
 	return render(request, 'replica/admin/create.html', variables)
+
+@login_required
+def Replica_Nano(request):
+	if request.method == "POST":
+		instance = Entry(author=request.user)
+		f = NanoEntryModelForm(request.POST or None, instance=instance)
+		if f.is_valid():
+			f.save()
+			messages.add_message(
+				request, messages.INFO, 'Entry Saved.')
+			return redirect('replica-admin')
+	else:
+		initial = {}
+		if "url" in request.GET:
+			initial["url"] = request.GET["url"]
+		if "title" in request.GET:
+			initial["title"] = request.GET["title"].strip()
+		if initial:
+			f = EntryModelForm(initial=initial)
+		else:
+			f = EntryModelForm()
+				
+	variables = {'form': f, 'adding': True}
+	return render(request, 'replica/admin/nano.html', variables)
+
 
 @login_required
 def ReplicaDelete(request, entry_id):

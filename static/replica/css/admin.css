@@ -1,0 +1,182 @@
+/* @override 
+	http://underlost.net/static/vendor/replica/css/admin.css
+*/
+
+body {
+	position: relative;
+	padding-top: 40px;
+	background: #f9f9f9 url('/static/img/background.png') center fixed;
+}
+
+.red {
+	color: #f8c8b9;
+	background: #ec663c;
+	padding: 10px 20px;
+}
+
+.blue {
+	color: #b8e7ee;
+	background: #12b0c5;
+	padding: 10px 20px;	
+}
+
+.blue a {
+	color: #b8e7ee;
+}
+
+.orange {
+	color: #ffdaad;
+	background: #ff9618;
+	padding: 10px 20px;	
+}
+
+.teal {
+	color: #c8ebe8;
+	background: #47bbb3;
+	padding: 10px 20px;	
+}
+
+.teal a {
+	color: #c8ebe8;
+}
+
+.green {
+	color: #e0ecc8;
+	background: #96bf48;
+	padding: 10px 20px;		
+}
+
+nav.site-nav {
+	position: fixed;
+	top: 25px;
+	left: 25px;
+	width: 32px;
+}
+
+nav.site-nav:hover ul.dropdown-menu {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.site-nav-branding img {
+	width: 32px;
+}
+
+section {
+	margin-bottom: 10px;
+}
+
+section h2,
+form#create-entry h2 {
+	font-weight: 200;
+}
+
+section ul.unstyled,
+fieldset ul.unstyled {
+	border-top: 1px solid rgba(255, 255, 255, .25);
+}
+
+section ul.unstyled li {
+	padding: 8px 2px;
+	border-bottom: 1px solid rgba(255, 255, 255, .25);
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+section ul.unstyled li:hover {
+	background: rgba(255, 255, 255, .1);
+}
+
+section#published ul.unstyled li .pull-right {
+	margin-top: 5px;
+}
+
+section#published ul.unstyled li .btn {
+	margin-right: 10px;
+	display: none;
+}
+
+section#published ul.unstyled li:hover .btn {
+	display: block;
+}
+
+section#published ul.unstyled li a {
+	color: #FFF;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+section#published ul.unstyled li time {
+	display: block;
+}
+
+.form-signin {
+	max-width: 300px;
+	padding: 19px 29px 29px;
+	margin: 20px auto 20px;
+}
+
+.form-signin h2 {
+	font-weight: 100;
+	font-size: 48px;
+	padding-bottom: 40px;
+	margin-bottom: 30px;
+	border-bottom: 3px solid #eee;
+}
+
+.form-signin .form-signin-heading,
+      .form-signin .checkbox {
+	margin-bottom: 10px;
+}
+
+.form-signin input[type="text"],
+      .form-signin input[type="password"] {
+	font-size: 16px;
+	height: auto;
+	margin-bottom: 15px;
+	padding: 7px 9px;
+}
+
+input#id_title {
+	display: block;
+	font-size: 34px;
+	line-height: 34px;
+	height: 50px;
+	margin-bottom: 30px;
+}
+
+form#create-entry #id_summary {
+	height: 50px;
+	margin-bottom: 30px;
+}
+
+section#create {
+	margin: 0 auto;
+	max-width: 812px;
+}
+
+section#create p a {
+	font-weight: bold;
+}
+
+ul.nav-tabs {
+	margin-bottom: 0;
+}
+
+div.tab-content {
+	background: #f9f9f9;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-top-width: 0px;
+}
+
+section#delete-confirm {
+	text-align: center;
+}
+
+section#delete-confirm h2 {
+	color: #FFF;
+}
