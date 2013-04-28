@@ -2,7 +2,7 @@ from __future__ import absolute_import
 from urlparse import urlparse
 
 from django import template
-from ..models import Entry
+from ..models import Entry, Draft, Page
 
 register = template.Library()
 

@@ -1,4 +1,4 @@
-Replica (v. 0.9)
+Replica (v. 0.9.4)
 =======
 
 Simple Blog/CMS written in Django/Python.
