@@ -13,7 +13,7 @@ from .forms import EntryModelForm, NanoEntryModelForm
 class ReplicaViewMixin(object):
 
 	date_field = 'pub_date'
-	paginate_by = 10
+	paginate_by = 15
 	allow_empty = True
 	month_format = "%m"
 
@@ -38,8 +38,11 @@ class ReplicaMonthArchiveView(ReplicaViewMixin, MonthArchiveView):
 class ReplicaDayArchiveView(ReplicaViewMixin, DayArchiveView):
     pass
 
-def ReplicaEntryDetail(request, year, month, day, slug):
-	entry = get_object_or_404(Entry, slug=slug)
+class ReplicaDateDetailView(ReplicaViewMixin, DateDetailView):
+    pass
+
+def ReplicaEntryFeatured(request, slug):
+	entry = get_object_or_404(Entry, slug=slug, post_type='featured')
 	variables = RequestContext(request, {'object': entry})
 	return render_to_response(['replica/articles/%s.html' % entry.slug, 'replica/entry_detail.html'], variables)
 
@@ -47,7 +50,6 @@ def ReplicaPage(request, slug):
 	page = get_object_or_404(Page, slug=slug)
 	variables = RequestContext(request, {'object': page})
 	return render_to_response(['replica/pages/%s.html' % page.slug, 'replica/page.html'], variables)
-
 
 ####Replica Admin
 @login_required

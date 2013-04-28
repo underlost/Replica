@@ -18,7 +18,8 @@ urlpatterns = patterns('',
 	url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'replica/admin/login.html'}),
 	
 	#Articles
-	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[\w-]+)/$', views.ReplicaEntryDetail, name="entry_detail"),
+	url(r'^featured/(?P<slug>[\w-]+)/$', views.ReplicaEntryFeatured, name="blog_featured"),
+	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[\w-]+)/$', views.ReplicaDateDetailView.as_view(), name="blog_detail"),
 	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', views.ReplicaDayArchiveView.as_view(), name="entry_day"),
 	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$', views.ReplicaMonthArchiveView.as_view(), name="entry_month"),
 	url(r'^(?P<year>\d{4})/$', views.ReplicaYearArchiveView.as_view(), name="entry_year"),

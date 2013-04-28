@@ -1,6 +1,5 @@
 import datetime
 import markdown
-
 import os
 import urllib2
 from urlparse import urlparse
@@ -34,7 +33,8 @@ CONTENT_FORMAT_CHOICES = (
 )
 
 POST_TYPE_CHOICES = (
-	(u'articles', u'Article'),
+	(u'article', u'Article'),
+	(u'featured', u'Featured'),
 	(u'aside', u'Aside'),
 	(u'linked', u'Link'),
 	(u'image', u'Image'),	
@@ -102,7 +102,7 @@ class Entry(models.Model):
 	title = models.CharField(max_length=200, default='Untitled Post')
 	url = models.URLField(blank=True)
 	slug = models.SlugField(unique_for_date='pub_date')
-	post_type = models.CharField(choices=POST_TYPE_CHOICES, max_length=10, default='articles')
+	post_type = models.CharField(choices=POST_TYPE_CHOICES, max_length=10, default='article')
 	is_active = models.BooleanField(help_text=_("This should be checked for live entries."), choices=IS_ACTIVE_CHOICES, default=False)
 	pub_date = models.DateTimeField(verbose_name=_("Publication date"), help_text=_("Entries set to a future date will only be visible for admin."), default=datetime.datetime.now)
 	image = models.ForeignKey(Media, blank=True, null=True)
@@ -130,7 +130,10 @@ class Entry(models.Model):
 	    return DraftInstance
 	
 	def get_absolute_url(self):
-		return "/blog/%s/" % (self.slug)
+		if self.post_type == u'featured':
+			return "/featured/%s/" % (self.slug)
+		else:
+			return "/%s/%s/" % (self.pub_date.strftime("%Y/%b/%d").lower(), self.slug)
 			
 	def is_published(self):
 		return self.is_active and self.pub_date <= datetime.datetime.now()
