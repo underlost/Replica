@@ -38,17 +38,23 @@
  
 <body class="{% block page %}{% endblock %}">
 
-	<nav class="site-nav"><div class="site-nav-branding">
-		<a id="logo" href="{% url 'replica-admin' %}" class="bounce"><span>Replica</span></a>
-		
-		<ul class="dropdown-menu">
-		  <li class=""><a href="{% url 'replica-admin' %}">Home</a></li>
-		  <li class=""><a href="{% url 'replica-add' %}">Create</a></li>
-		  <li class=""><a href="#">Pages</a></li>
-		  <li class=""><a href="#">Media</a></li>
-		</ul>
-	</div></nav>
-
+	{% if user.is_authenticated %}
+	<div class="container">
+	<div class="navbar">
+	  <div class="navbar-inner">
+	    <a class="brand" href="#">Replica</a>
+	    <ul class="nav">
+	      <li class="visible-desktop"><a href="{% url 'replica-admin' %}">Dashboard</a></li>
+	      <li><a href="#">Entries</a></li>
+	      <li><a href="#">Pages</a></li>
+	      <li><a href="#">Media</a></li>
+	      <li><a href="#">Settings</a></li>
+	    </ul>
+	  </div>
+	</div>
+	</div>
+	{% endif %}
+	
 	<div class="container" id="wrap">
 	{% block content %}{% endblock %}
 	</div>	

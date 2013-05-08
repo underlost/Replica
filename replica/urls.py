@@ -19,11 +19,11 @@ urlpatterns = patterns('',
 	
 	#Articles
 	url(r'^featured/(?P<slug>[\w-]+)/$', views.ReplicaEntryFeatured, name="blog_featured"),
-	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[\w-]+)/$', views.ReplicaDateDetailView.as_view(), name="blog_detail"),
-	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', views.ReplicaDayArchiveView.as_view(), name="entry_day"),
-	url(r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$', views.ReplicaMonthArchiveView.as_view(), name="entry_month"),
-	url(r'^(?P<year>\d{4})/$', views.ReplicaYearArchiveView.as_view(), name="entry_year"),
-	url(r'^?$', views.ReplicaArchiveIndexView.as_view(), name="news_index"),
+	url(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[\w-]+)/$', views.ReplicaDateDetailView.as_view(), name="blog_detail"),
+	url(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', views.ReplicaDayArchiveView.as_view(), name="entry_day"),
+	url(r'^blog/(?P<year>\d{4})/(?P<month>[a-z]{3})/$', views.ReplicaMonthArchiveView.as_view(), name="entry_month"),
+	url(r'^blog/(?P<year>\d{4})/$', views.ReplicaYearArchiveView.as_view(), name="entry_year"),
+	url(r'^blog/?$', views.ReplicaArchiveIndexView.as_view(), name="news_index"),
 	 
 	#RSS Feeds
 	url(r'^feed/$', feeds.KitchenSinkFeed(), name='Kitchensink-rss'),

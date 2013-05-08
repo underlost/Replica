@@ -5,10 +5,10 @@ from django.views.decorators.cache import cache_page
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.contrib import messages
-from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView)
+from django.views.generic.dates import (ArchiveIndexView, YearArchiveView, MonthArchiveView, DayArchiveView, DateDetailView)
 
-from .models import Entry, Page
-from .forms import EntryModelForm, NanoEntryModelForm
+from .models import Entry, Draft, Page
+from .forms import EntryModelForm, NanoEntryModelForm, DraftModelForm
 
 class ReplicaViewMixin(object):
 
@@ -54,7 +54,7 @@ def ReplicaPage(request, slug):
 ####Replica Admin
 @login_required
 def ReplicaAdmin(request):
-	published = Entry.objects.published().filter(author=request.user)
+	published = Entry.objects.published().filter(author=request.user)[:6]
 	ideas = Entry.objects.ideas().filter(author=request.user)
 	pages = Page.objects.all()
 	instance = Entry(author=request.user)
@@ -108,9 +108,9 @@ def Replica_Nano(request):
 		if "title" in request.GET:
 			initial["title"] = request.GET["title"].strip()
 		if initial:
-			f = EntryModelForm(initial=initial)
+			f = NanoEntryModelForm(initial=initial)
 		else:
-			f = EntryModelForm()
+			f = NanoEntryModelForm()
 				
 	variables = {'form': f, 'adding': True}
 	return render(request, 'replica/admin/nano.html', variables)

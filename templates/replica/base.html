@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js home"> <!--<![endif]--> 
+<head>
+	
+	<title>{% block title %}{% endblock %}A Life Well Played</title>
+		
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/static/css/global.min.css" type="text/css">
+	<link rel="stylesheet" href="/static/css/newsy.css" type="text/css">
+		
+	<!-- RSS -->		
+	<link href="/feed/" rel="alternate" title="Atom feed" type="application/atom+xml">
+	
+	<!-- Meta --> 
+	<meta charset="UTF-8" /> 
+	<meta name="author" content="Tyler Rilling" /> 
+	<meta name="description" content="A Website about video games and people who play them." /> 
+	<meta name="keywords" content="interviews, news, video game news, gamer interviews, video games"  />
+	<meta name="viewport" content="width=device-width, minimum-scale=0.6, maximum-scale=1.0" />
+		
+	<!-- Javascript --> 
+	<script type="text/javascript" src="http://use.typekit.com/nwd0igl.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-30583107-1']);
+	  _gaq.push(['_setDomainName', 'alifewellplayed.com']);
+	  _gaq.push(['_setAllowLinker', true]);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+	
+	<!-- start Mixpanel --><script type="text/javascript">(function(d,c){var a,b,g,e;a=d.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===d.location.protocol?"https:":"http:")+'//api.mixpanel.com/site_media/js/api/mixpanel.2.js';b=d.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b);c._i=[];c.init=function(a,d,f){var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";g="disable track track_links track_forms register register_once unregister identify name_tag set_config".split(" ");for(e=0;e<
+	g.length;e++)(function(a){b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,0)))}})(g[e]);c._i.push([a,d,f])};window.mixpanel=c})(document,[]);
+	mixpanel.init("4affa3a94d38732b90038fcfb6fc113e");</script><!-- end Mixpanel -->
+	
+	{% block extra %}{% endblock %}
+</head>
+
+	<body class="news">
+		<div id="wrap">
+		<header id="top" role="masthead">
+			<div id="header-inner">
+			<h1 id="blog_name" title="A Life Well Played"><a href="{% url 'entry_index' %}">A Life Well Played</a></h1>
+					
+		  <a href="{% url 'entry_index' %}" title="A Life Well Played" id="logo-linked">
+		  	<div id="logo"><div id="marker" style="opacity: 1; ">
+		  		<a href="{% url 'entry_index' %}"><div class="dot_pulse">&nbsp;</div><div class="dot">&nbsp;</div></a>
+		  	</div></div>
+		  </a>
+		  		  
+		  <nav id="site-nav">
+		  	
+		  	<p>By Tyler Rilling</p>
+		  	
+			  <ul class="unstyled">
+			  	<li><a href="/archive/">Archive</a></li>
+			  	<!-- <li><a href="/">Interviews</a></li> -->
+			  	<li><a href="/contact/">Contact</a></li>
+			  	<li><a href="/colophon/">Colophon</a></li>
+			  	<li><a href="/feeds/">RSS Feed</a></li>
+			  </ul>
+		  </nav>
+		  
+		  </div><!-- header-inner -->
+		</header>
+							
+		<section id="content">
+		{% block content %}{% endblock %}
+			<footer>A Life Well Played, Copyright &copy; 2013 Tyler Rilling</footer>
+		</section>
+		</div>		
+	</body>
+</html>

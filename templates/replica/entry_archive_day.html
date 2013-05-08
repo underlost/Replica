@@ -1,0 +1,24 @@
+{% extends 'replica/base.html' %}{% load replicant %}
+
+{% block title %}News | {% endblock %}
+{% block page %}news home{% endblock %}
+
+{% block content %}
+{% for object in latest %}
+
+{% if object.post_type == "article" %}
+<article class="article">
+	<h1 class="link"><a href="{{ object.get_absolute_url }}" title="{{ object.title|safe }}">{{ object.title|safe }}</a></h1>
+	<div class="dateline">{{ object.pub_date|date:"F jS, Y" }}</div>
+	{{ object.body_html|safe }}
+</article>
+{% else %}
+<article class="linked">
+	{% if forloop.first %}<div class="date-container">{{ object.pub_date|date:"F jS, Y" }}</div>{% endif %}
+	<h2 class="link"><a href="{{ object.url|safe }}" title="{{ object.title|safe }}">{{ object.title|safe }}</a>
+	<span class="linked-list-permalink"><a href="{{ object.get_absolute_url }}" rel="bookmark" title="" class="glyph">&#8734;</a></span></h2>
+	<div class="linked-content">{{ object.summary_html|safe }}</div>
+</article>
+{% endif %}
+{% endfor %}
+{% endblock %}

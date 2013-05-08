@@ -12,8 +12,8 @@ class EntryModelForm(forms.ModelForm):
 		model = Entry
 		exclude = ('pub_date', 'slug', 'summary_html', 'body_html', 'author')
 		widgets = {		
-			'title': forms.TextInput(attrs={'class':'input-block-level', 'placeholder':'Title'}),
-			'summary': forms.Textarea(attrs={'class':'input-block-level'}),
+			'title': forms.TextInput(attrs={'class':'input-block-level', 'placeholder':'Title', 'value':''}),
+			'summary': forms.Textarea(attrs={'class':'input-block-level', 'placeholder':'Optional Summary'}),
 			'body': forms.Textarea(attrs={'class':'input-block-level', 'placeholder':'Start typing'}),
 			'is_active': forms.RadioSelect
 		}
@@ -24,8 +24,9 @@ class NanoEntryModelForm(forms.ModelForm):
 		model = Entry
 		exclude = ('pub_date', 'slug', 'summary_html', 'body_html', 'author')
 		widgets = {		
-			'title': forms.TextInput(attrs={'class':'input-block-level', 'placeholder':'Title'}),
+			'title': forms.TextInput(attrs={'class':'input-block-level', 'placeholder':'Title', 'value':''}),
 			'body': forms.Textarea(attrs={'class':'input-block-level', 'placeholder':'Start typing'}),
+			'summary': forms.Textarea(attrs={'class':'input-block-level', 'placeholder':'Start typing'}),
 		}
 		
 class DraftModelForm(forms.ModelForm):

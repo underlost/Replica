@@ -133,7 +133,7 @@ class Entry(models.Model):
 		if self.post_type == u'featured':
 			return "/featured/%s/" % (self.slug)
 		else:
-			return "/%s/%s/" % (self.pub_date.strftime("%Y/%b/%d").lower(), self.slug)
+			return "/%s/%s/" % (self.pub_date.strftime("%Y/%m/%d").lower(), self.slug)
 			
 	def is_published(self):
 		return self.is_active and self.pub_date <= datetime.datetime.now()
@@ -150,7 +150,9 @@ class Entry(models.Model):
 			self.summary_html = self.summary
 			self.body_html = self.body 			
 		
-		self.Create_Draft()
+		if self.id:
+			self.Create_Draft()
+			
 		super(Entry, self).save(*args, **kwargs)
 
 class Draft(models.Model):

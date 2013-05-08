@@ -1,0 +1,9 @@
+{% extends 'replica/base.html' %}{% load replicant %}
+
+{% block title %}Archive | {% endblock %}
+{% block page %}archive page{% endblock %}
+
+{% block content %}
+	<h2>Archive</h2>
+	{% render_month_links %}
+{% endblock %}

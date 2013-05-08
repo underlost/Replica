@@ -6,13 +6,6 @@ from ..models import Entry, Draft, Page
 
 register = template.Library()
 
-@register.inclusion_tag('replica/templatetags/render_latest.html')
-def render_latest(num):
-	objects = Entry.objects.published()[:num]
-	return {
-		'objects': objects,
-	}
-	
 @register.inclusion_tag('replica/templatetags/render_latest_entries.html')
 def render_latest_entries(num):
 	objects = Entry.objects.all()[:num]

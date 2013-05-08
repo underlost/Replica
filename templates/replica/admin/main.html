@@ -6,6 +6,38 @@
 {% block content %}
 <div class="row">
 	
+	<div class="span12">
+		<section id="greeting">
+			<ul class="inline">
+			<li class="visible-desktop"><Strong>Welcome back,</Strong> {{ user }}</span></li>
+			<li><a href="{% url 'replica-add' %}"><i class="icon-pencil"></i> New Entry</a></li>
+			<li><i class="icon-search"></i> Search</li>
+			</ul>
+		</section>
+	</div>
+
+	<div class="span5">
+		<section id="today">
+			<h4>Today</h4>
+			<div class="data">
+				<span class="clock">{% now "g:i" %}</span><span class="am-pm">{% now "a" %}</span>
+				<span class="day-week">{% now "l / N j / Y" %}</span>
+			</div>
+		</section>
+	</div>
+	
+	<div class="span7">
+		<section id="new-idea">			
+		<form method="POST" action="{% url 'replica-add' %}" id="create-idea">
+		{% csrf_token %}
+			<input type="submit" class="btn pull-right" value="Save">
+			<input class="input-medium" id="id_title" maxlength="200" name="title" placeholder="New Idea" type="text" />
+			{{form.body.errors}}
+			{{form.body}}
+		</form>
+		</section>
+	</div>
+	
 	<div class="span6">
 		<div class="row">
 		
@@ -18,8 +50,8 @@
 		{% endif %}
 		
 		<div class="span6">	
-		<section id="stats" class="red">
-			<h2>Hello, {{ user }}</h2>
+		<section id="stats">
+			<h2>Stats</h2>
 			<ul class="unstyled">
 				<li>Published Entries: {{ published|length }}</li>
 				<li>Ideas: {{ ideas|length }}</li>
@@ -30,19 +62,23 @@
 		</div><!-- span6 -->
 		
 		<div class="span6">
-			<section id="new-idea" class="orange">			
-			<form method="POST" action="{% url 'replica-add' %}" id="create-idea">
-			{% csrf_token %}
-				<input type="submit" class="btn btn-warning pull-right" value="Save">
-				<input class="input-medium" id="id_title" maxlength="200" name="title" placeholder="New Idea" type="text" />
-				{{form.body.errors}}
-				{{form.body}}
-			</form>
+			<section id="pages">
+				<h2>Pages</h2>
+				<ul class="unstyled">
+				{% for page in pages %}
+					<li>
+						<a href="{{ page.url }}">{{ page.title }}</a>
+						<span>{{ page.url }}</span>
+					</li>
+				{% empty %}
+				   	<li>None yet.</li>
+				{% endfor %}
+				</ul>			
 			</section>
 		</div><!-- span6 -->
 	
 		<div class="span6">
-		<section id="ideas" class="entries blue">		
+		<section id="ideas" class="entries">		
 			<h2>Ideas</h2>
 			<ul class="unstyled">
 			{% for idea in ideas %}
@@ -60,31 +96,15 @@
 		</div><!-- row -->
 	</div><!-- span6 -->
 	
-	<div class="span6">	
-	<section id="pages" class="purple">
-		<h2>Pages</h2>
-		<ul class="unstyled">
-		{% for page in pages %}
-			<li>
-				<a href="{{ page.url }}">{{ page.title }}</a>
-				<span>{{ page.url }}</span>
-			</li>
-		{% empty %}
-		   	<li>None yet.</li>
-		{% endfor %}
-		</ul>			
-	</section>
-	</div><!-- span6 -->
-	
 	<div class="span6">
 		<div class="row">
 			<div class="span6">	
-			<section id="published" class="entries green">				
+			<section id="published" class="entries">				
 				<h2>Published</h2>
 				<ul class="unstyled">
 				{% for entry in published %}
 					<li>
-						<a href="{% url 'replica-edit' entry.id %}" class="btn btn-success pull-right"><i class="icon-edit icon-white"></i></a>
+						<a href="{% url 'replica-edit' entry.id %}" class="btn pull-right"><i class="icon-edit"></i></a>
 						<a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
 						<time datetime="{{ entry.pub_date|date:"F jS, Y" }}">{{ entry.pub_date|date:"F jS, Y" }}</time>
 					</li>

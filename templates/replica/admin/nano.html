@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>{% load replicant %}
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
@@ -36,7 +36,7 @@
 	<div id="wrap">
 	<section id="create">
 		<form method="POST" action="" id="create-entry" class="wide">
-		<ul class="nav nav-tabs">
+		<ul class="nav nav-pills">
 			<li class="active"><a href="#entry" data-toggle="tab">{% if adding %}New{% else %}Edit{% endif %} Entry</a></li>
 			<li><a href="#settings" data-toggle="tab">Settings</a></li>
 		</ul>
@@ -61,17 +61,20 @@
 			</div>
 			
 			<div class="tab-pane fade" id="settings">
-				<fieldset class="settings">
-					<h2>Settings</h2>
+				<fieldset class="settings">				
+					
+					<h4>Summary</h4>
+					{{form.summary.errors}}
+					{{form.summary}}
+						
 					<ul class="unstyled">
-						<li></li>
 						<li>{{form.post_type}} <span class="help-inline">Post Type</span></li>
 						<li>{{form.content_format}} <span class="help-inline">Markup</span></li>
 						<li>
 						<h4>Status</h4>
-						<label class="radio inline"><label><input checked="checked" name="is_active" type="radio" value="True" /> Published</label></label>
-						<label class="radio inline"><label><input name="is_active" type="radio" value="False" /> Draft</label></label>
-						
+						{% for radio in form.is_active %}
+						<label class="radio inline">{{ radio }}</label>
+						{% endfor %}
 						</li>
 					</ul>
 				</fieldset>
@@ -81,7 +84,7 @@
 		{% csrf_token %}
 		</form>
 		
-		<p>You can also drag this handy {% include "replica/includes/_bookmarklet_nano.html" %} up to your toolbar.</p>
+		<p>You can also drag this handy {% render_bookmarklet nano %} up to your toolbar.</p>
 	</section>
 	</div>	
 	

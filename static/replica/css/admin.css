@@ -1,12 +1,15 @@
 /* @override 
 	http://underlost.net/static/vendor/replica/css/admin.css
 	http://underlost.net/static/replica/css/admin.css
+	http://alifewellplayed.herokuapp.com/static/replica/css/admin.css
 */
 
 body {
 	position: relative;
-	padding-top: 40px;
-	background: #f9f9f9 url('../img/gplaypattern.png') center fixed;
+}
+
+body.dashboard {
+	background: #ebebe3;	
 }
 
 .red {
@@ -66,13 +69,25 @@ nav.site-nav {
 	width: 32px;
 }
 
-nav.site-nav span{
-	display: block;
-	height: 32px;
-	width: 32px;
+div.navbar {
+	margin-bottom: 10px;
+	
+}
+
+div.navbar-inner {
+	background: #FFF;
+	border: 1px solid #e0e2d7;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+
+div.navbar-inner .brand{
+	height: 24px;
+	width: 24px;
 	text-indent: -9999px;
-	background: url(/static/replica/img/replica_logo.png) no-repeat;
-	background-size: 32px 32px;
+	background: url(/static/replica/img/replica_logo.png) center center no-repeat;
+	background-size: 24px 24px;
 }
 
 nav.site-nav:hover ul.dropdown-menu {
@@ -86,8 +101,69 @@ nav.site-nav:hover ul.dropdown-menu {
 	width: 32px;
 }
 
-section {
+body.main section,
+body.dashboard section {
+	background: #FFF;
+	color: #8f8f8f;
+	border: 1px solid #e0e2d7;
 	margin-bottom: 10px;
+	padding: 10px 20px;	
+}
+
+section#today .data {
+	padding-top: 20px;
+}
+
+section#today,
+section#new-idea {
+	display: block;
+	min-height: 180px;
+}
+
+section#today h4 {
+	font-weight: normal;
+	padding-bottom: 15px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #e0e2d7;
+}
+
+section#today .data span.clock{
+	font-size: 72px;
+	color: #333;
+}
+
+section#today .data span.am-pm {
+	font-size: 28px;
+	color: #333;
+}
+
+span.day-week {
+	display: block;
+	padding: 5px;
+	font-size: 22px;
+	line-height: 36px;
+	letter-spacing: 1px;
+}
+
+body.main section#greeting {
+	padding: 0;
+}
+
+body.main section#greeting ul {
+	margin: 0;
+}
+
+body.main section#greeting ul li {
+	border-right: 1px solid #e0e2d7;
+	padding: 10px 25px 10px 15px;
+}
+
+body.main section#greeting ul li.visible-desktop {
+	float: left;
+}
+
+body.main section#greeting ul li:last-child {
+	border-width: 0px;
 }
 
 section h2,
@@ -97,19 +173,19 @@ form#create-entry h2 {
 
 section ul.unstyled,
 fieldset ul.unstyled {
-	border-top: 1px solid rgba(255, 255, 255, .25);
+	border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
 section ul.unstyled li {
 	padding: 8px 2px;
-	border-bottom: 1px solid rgba(255, 255, 255, .25);
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
 	-webkit-transition: all .2s linear;
 	-moz-transition: all .2s linear;
 	transition: all .2s linear;
 }
 
 section ul.unstyled li:hover {
-	background: rgba(255, 255, 255, .1);
+	background: rgba(0, 0, 0, .02);
 }
 
 section#published ul.unstyled li .pull-right {
@@ -127,7 +203,7 @@ section#published ul.unstyled li:hover .btn {
 
 section#published ul.unstyled li a,
 section#pages ul.unstyled li a {
-	color: #FFF;
+	color: #333;
 	font-weight: 500;
 	font-size: 16px;
 	display: block;
@@ -160,21 +236,12 @@ section#pages ul.unstyled li a {
 	padding: 7px 9px;
 }
 
-input#id_title,
-span#id_title {
-	display: block;
-	font-size: 34px;
-	line-height: 40px;
-	height: 50px;
-	margin-bottom: 30px;
-}
-
 form#create-entry #id_summary {
 	height: 50px;
 	margin-bottom: 30px;
 }
 
-section#create {
+body.nano section#create {
 	margin: 0 auto;
 	max-width: 812px;
 }
@@ -187,29 +254,48 @@ ul.nav-tabs {
 	margin-bottom: 0;
 }
 
-div.tab-content {
-	background: #f9f9f9;
-	padding: 20px;
-	border: 1px solid #ddd;
-	border-top-width: 0px;
+
+body.nano {
+	margin-top: 15px;
 }
+
+body.nano #settings ul {
+	border-width: 0;
+}
+
+fieldset.settings ul.unstyled li {
+	margin-top: 5px;
+}
+
 
 section#delete-confirm {
 	text-align: center;
 }
 
 section#delete-confirm h2 {
-	color: #FFF;
+	color: #333;
 }
 
 body.main form#create-idea input#id_title,
 body.main form#create-idea textarea {
-	color: #ffdaad;
+	color: #8f8f8f;
 	border-width: 0;
 	background: none;
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;	
+}
+
+input#id_title,
+span#id_title {
+	display: block;
+	font-size: 34px;
+	line-height: 40px;
+	height: 50px;
+	border-width: 0;
+	box-shadow: none;
+	background: none;
+	padding: 0;
 }
 
 body.main form#create-idea .btn {
@@ -222,16 +308,16 @@ body.main form#create-idea textarea {
 
 
 body.main form#create-idea ::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #ffdaad;
+    color:    #8f8f8f;
 }
 body.main form#create-idea :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #ffdaad;
+    color:    #8f8f8f;
 }
 body.main form#create-idea ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #ffdaad;
+    color:    #8f8f8f;
 }
 body.main form#create-idea :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:   #ffdaad;
+    color:   #8f8f8f;
 }
 
 

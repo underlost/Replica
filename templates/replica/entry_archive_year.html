@@ -1,0 +1,17 @@
+{% extends 'replica/base.html' %}
+{% load replicant %}
+
+{% block title %}News | {% endblock %}
+{% block page %}news home{% endblock %}
+
+{% block content %}
+
+<h3 class="archive">Published in {{ year|date:"Y" }}</h3>
+
+<ul class="unstyled linklist">
+{% for date in date_list %}
+<li><a href="{{ date|date:"m"|lower }}/">{{ date|date:"F Y" }}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
