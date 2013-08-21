@@ -1,0 +1,41 @@
+{% extends 'dashboard/base.html' %}
+{% load replicant %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block content %}{% load replicant %}{% load dash %}
+<div class="row">
+
+<div class="col-md-5">
+	<section>
+		<h4>Scheduled Posts</h4>
+		{% render_upcoming 100 %}
+	</section>
+	
+	<section>
+		<h4>Ideas</h4>
+		{% render_ideas 100 %}
+	</section>
+	
+	<section class="browse-by-month">
+		<h4>Browse by month</h4>
+		{% render_dashboard_months %}
+	</section>
+</div>
+
+<div class="col-md-7">
+	<section id="latest-entries">			
+		<h4>Published in {{ year|date:"Y" }}</h4>
+		
+		<ul class="list-unstyled linklist">
+		{% for date in date_list %}
+		<li><a href="{{ date|date:"m"|lower }}/">{{ date|date:"F Y" }}</a></li>
+		{% endfor %}
+		</ul>
+
+	</section>
+</div>
+
+</div><!-- row -->
+{% endblock %}
+

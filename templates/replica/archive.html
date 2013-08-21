@@ -1,9 +1,10 @@
-{% extends 'replica/base.html' %}{% load replicant %}
+{% extends 'base.html' %}{% load replicant %}
 
 {% block title %}Archive | {% endblock %}
-{% block page %}archive page{% endblock %}
+{% block page %}news archive page{% endblock %}
 
 {% block content %}
-	<h2>Archive</h2>
+	<h2 class="heading">Previously:</h2>
+	{% render_latest_articles %}
 	{% render_month_links %}
 {% endblock %}

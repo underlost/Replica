@@ -1,0 +1,249 @@
+[
+  {
+    "pk": 14, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "Called this back in January, but I expected it to go Free-to-play a lot sooner. Surprised the monthly subscription setup for the game lasted as long as it did. ", 
+      "title": "Star Wars The Old Republic To go Free-to-Play In Fall", 
+      "url": "http://www.businesswire.com/portal/site/home/email/alert/?ndmViewId=news_view&newsLang=en&newsId=20120731006602", 
+      "summary_html": "<p>Called this back in January, but I expected it to go Free-to-play a lot sooner. Surprised the monthly subscription setup for the game lasted as long as it did. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>Called this back in January, but I expected it to go Free-to-play a lot sooner. Surprised the monthly subscription setup for the game lasted as long as it did. </p>", 
+      "summary": "Called this back in January, but I expected it to go Free-to-play a lot sooner. Surprised the monthly subscription setup for the game lasted as long as it did. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-31T14:27:21", 
+      "slug": "star-wars-old-republic-go-free-play-fall"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "Makers of Resistance and Ratchet & Clank titles take a shot at making a facebook game. Other than EA's Social bullshit, it makes for a surprisingly fun and addictive Pokemon clone set in space. ", 
+      "title": "Insomniac Games' Outernauts", 
+      "url": "http://www.insomniacgames.com/games/outernauts/", 
+      "summary_html": "<p>Makers of Resistance and Ratchet &amp; Clank titles take a shot at making a facebook game. Other than EA's Social bullshit, it makes for a surprisingly fun and addictive Pokemon clone set in space. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>Makers of Resistance and Ratchet &amp; Clank titles take a shot at making a facebook game. Other than EA's Social bullshit, it makes for a surprisingly fun and addictive Pokemon clone set in space. </p>", 
+      "summary": "Makers of Resistance and Ratchet & Clank titles take a shot at making a facebook game. Other than EA's Social bullshit, it makes for a surprisingly fun and addictive Pokemon clone set in space. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-24T16:34:34", 
+      "slug": "insomniac-games-outernauts"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "Mostly fluff acknowledging the game still needs a lot of work. There is also some mention of \"social changes\" that will hopefully make the game not feel like a ghost town. ", 
+      "title": "Blizzard CEO Mike Morhaime Comments on Diablo III", 
+      "url": "http://us.battle.net/d3/en/forum/topic/6080663481", 
+      "summary_html": "<p>Mostly fluff acknowledging the game still needs a lot of work. There is also some mention of \"social changes\" that will hopefully make the game not feel like a ghost town. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>Mostly fluff acknowledging the game still needs a lot of work. There is also some mention of \"social changes\" that will hopefully make the game not feel like a ghost town. </p>", 
+      "summary": "Mostly fluff acknowledging the game still needs a lot of work. There is also some mention of \"social changes\" that will hopefully make the game not feel like a ghost town. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-19T10:20:14", 
+      "slug": "blizzard-ceo-mike-morhaime-comments-diablo-iii"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "Armed Heroes developer, Serena Zhang responds that they \"never straightly stole assets from Torchlight,\" instead they were inspired by games like World of Warcraft. Notice they dont deny they used stolen assets- they just didnt steal them directly  from Torchlight.", 
+      "title": "IOS Game Stole Torchlight Assets", 
+      "url": "http://www.geek.com/articles/games/torchlight-art-assets-stolen-used-in-ios-game-armed-heroes-20120717/", 
+      "summary_html": "<p>Armed Heroes developer, Serena Zhang responds that they \"never straightly stole assets from Torchlight,\" instead they were inspired by games like World of Warcraft. Notice they dont deny they used stolen assets- they just didnt steal them directly  from Torchlight.</p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>Armed Heroes developer, Serena Zhang responds that they \"never straightly stole assets from Torchlight,\" instead they were inspired by games like World of Warcraft. Notice they dont deny they used stolen assets- they just didnt steal them directly  from Torchlight.</p>", 
+      "summary": "Armed Heroes developer, Serena Zhang responds that they \"never straightly stole assets from Torchlight,\" instead they were inspired by games like World of Warcraft. Notice they dont deny they used stolen assets- they just didnt steal them directly  from Torchlight.", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-17T15:41:30", 
+      "slug": "ios-game-stole-torchlight-assets"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": ">Build New Games fuses game programming, web development & open web technology to push the boundaries of game development on all platforms.\r\n\r\nSome well written articles on getting started with web based games. As an added easter egg, you can also play Asteroids on the frontpage. ", 
+      "title": "Build New Games", 
+      "url": "http://buildnewgames.com/", 
+      "summary_html": "<blockquote>\n<p>Build New Games fuses game programming, web development &amp; open web technology to push the boundaries of game development on all platforms.</p>\n</blockquote>\n<p>Some well written articles on getting started with web based games. As an added easter egg, you can also play Asteroids on the frontpage. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<blockquote>\n<p>Build New Games fuses game programming, web development &amp; open web technology to push the boundaries of game development on all platforms.</p>\n</blockquote>\n<p>Some well written articles on getting started with web based games. As an added easter egg, you can also play Asteroids on the frontpage. </p>", 
+      "summary": ">Build New Games fuses game programming, web development & open web technology to push the boundaries of game development on all platforms.\r\n\r\nSome well written articles on getting started with web based games. As an added easter egg, you can also play Asteroids on the frontpage. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-13T15:53:12", 
+      "slug": "build-new-games"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": ">A woman seeking to expose misogyny in video games has suffered a harsh lesson in the extent of Internet viciousness, as a campaign of harassment escalated to a Canadian man creating a game that let people batter an image of her face.\r\n\r\nIt amazes me how someone could raise so much money for a a great, interesting concept, then becomes a target of trolling by the same type of people who helped raise the money. Stay classy, average male gamer. ", 
+      "title": "Woman's call to end video game misogyny sparks vicious online attacks", 
+      "url": "http://www.theglobeandmail.com/news/world/womans-call-to-end-video-game-misogyny-sparks-vicious-online-attacks/article4405585/", 
+      "summary_html": "<blockquote>\n<p>A woman seeking to expose misogyny in video games has suffered a harsh lesson in the extent of Internet viciousness, as a campaign of harassment escalated to a Canadian man creating a game that let people batter an image of her face.</p>\n</blockquote>\n<p>It amazes me how someone could raise so much money for a a great, interesting concept, then becomes a target of trolling by the same type of people who helped raise the money. Stay classy, average male gamer. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<blockquote>\n<p>A woman seeking to expose misogyny in video games has suffered a harsh lesson in the extent of Internet viciousness, as a campaign of harassment escalated to a Canadian man creating a game that let people batter an image of her face.</p>\n</blockquote>\n<p>It amazes me how someone could raise so much money for a a great, interesting concept, then becomes a target of trolling by the same type of people who helped raise the money. Stay classy, average male gamer. </p>", 
+      "summary": ">A woman seeking to expose misogyny in video games has suffered a harsh lesson in the extent of Internet viciousness, as a campaign of harassment escalated to a Canadian man creating a game that let people batter an image of her face.\r\n\r\nIt amazes me how someone could raise so much money for a a great, interesting concept, then becomes a target of trolling by the same type of people who helped raise the money. Stay classy, average male gamer. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-11T14:08:18", 
+      "slug": "womans-call-end-video-game-misogyny-sparks-vicious"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": ">Actually this is something my bosses have been asking me for quite a while now - what are our plans for DLC? How much money can we make? They are a company, obviously, in it to make money. So it's something I'm continually asked even now. But I haven't changed my stance. If you're making a fighting game, all of the elements necessary to enjoy it should be on the disc, or should at least be available for free.", 
+      "title": "Tekken Producer on DLC", 
+      "url": "http://www.eurogamer.net/articles/2012-07-09-mr-tekken-behind-the-shades-of-the-franchise-chief", 
+      "summary_html": "<blockquote>\n<p>Actually this is something my bosses have been asking me for quite a while now - what are our plans for DLC? How much money can we make? They are a company, obviously, in it to make money. So it's something I'm continually asked even now. But I haven't changed my stance. If you're making a fighting game, all of the elements necessary to enjoy it should be on the disc, or should at least be available for free.</p>\n</blockquote>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<blockquote>\n<p>Actually this is something my bosses have been asking me for quite a while now - what are our plans for DLC? How much money can we make? They are a company, obviously, in it to make money. So it's something I'm continually asked even now. But I haven't changed my stance. If you're making a fighting game, all of the elements necessary to enjoy it should be on the disc, or should at least be available for free.</p>\n</blockquote>", 
+      "summary": ">Actually this is something my bosses have been asking me for quite a while now - what are our plans for DLC? How much money can we make? They are a company, obviously, in it to make money. So it's something I'm continually asked even now. But I haven't changed my stance. If you're making a fighting game, all of the elements necessary to enjoy it should be on the disc, or should at least be available for free.", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-11T09:27:24", 
+      "slug": "tekken-producer-dlc"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "With [Ouya\u2019s Kickstarter](http://www.kickstarter.com/projects/ouya/ouya-a-new-kind-of-video-game-console) page going live yesterday, people have been asking me what I thought of the new console. I've had some time to think it over, and I keep coming to the same conclusion. The Ouya is little more than a smartphone masquerading as a home console. This isn\u2019t necessarily a bad thing, it\u2019s just what it is. \r\n\r\n### Hardware\r\n\r\nLets start with the hardware. It\u2019s near identical to what\u2019s found in the current generation of smartphones and tablets. Nothing about it is really impressive. It\u2019s CPU, the Terga3, was specifically designed for mobile devices, specifically audio and video. Its a 32-bit multicore ARM architecture with a very small cache. In theory it\u2019s nearly as powerful as a current generation console.The Terga3 however was designed to be very low in power consumption. But since the Ouya is plugged in at all times, it can be pushed harder than a tablet would. How much they\u2019re able to take advantage of this fact and optimize it has yet to be seen. \r\n\r\nWhat really troubles me though, is the small amount of internal disk space the Ouya has. With only 8GB of internal space, even less when you take into consideration of system files, and no dvd drive in sight, any dream that it could compete with an Xbox, Playstation or Wii is killed. Between high resolution textures, audio and cutscenes, 8GB fills up incredibly fast. Unless you\u2019re an indie title, most modern games take up between 5-10GB. With such a restriction you severely limit the size you want games to be on your platform. Even if you\u2019re able to attach an external hard drive, publishers like EA or Activision wouldn\u2019t force such a requirement to play their games. They have never required extra hardware to run their game on a console before and wouldnt start now. \r\n\r\n### Software\r\n\r\nWhat\u2019s most baffling above all, is why it runs Android. If you were serious about \u201cdisrupting\u201d the industry, you don\u2019t half-ass it and choose a mobile OS to power your home entertainment system. You have the freedom to use any variation of Linux you want, and you choose Android? By no means is Android a bad OS. It\u2019s great for tablets and phones, it just hasn\u2019t been proven as viable gaming platform **yet**. And let\u2019s face it, game companies are lazy and greedy. Why would they choose to waste the time to port a full game to another platform, when they can easily make minimal changes to their IOS/Android game? \r\n\r\n### The Zeebo Clone?\r\n\r\nWhat everyone seems to also overlook is the [Zeebo](http://www.giantbomb.com/zeebo/60-122/). A few years ago, Zeebo Inc released an inexpensive console to developing countries. The premise of it was to be an affordable home console system. To keep costs low, it\u2019s architecture was very similar to the Ouya. Unlike the Ouya however, they had agreements with EA and Capcom. And while it has reached moderate success, the only games that ever made it to the console were ports of existing mobile games. I can only hope large publishers will take notice of Ouya\u2019s Kickstarter popularity, and the additional money being raised will go to fund deals with them. \r\n\r\nWhen you look at the big picture, this will be the platform for indie developers and small/casual games. And you know what? I\u2019m perfectly happy with that. I will never see it as a replacement for my Xbox 360, or a Playstation 3, but for $99, its a pretty cheap investment. Not to mention there are mobile-only apps that I would much prefer playing on a big screen instead of a handheld. ", 
+      "title": "Angry Birds HD: My thoughts on Ouya", 
+      "url": "", 
+      "summary_html": "<p>With <a href=\"http://www.kickstarter.com/projects/ouya/ouya-a-new-kind-of-video-game-console\">Ouya\u2019s Kickstarter</a> page going live yesterday, people have been asking me what I thought of the new console. I've had some time to think it over, and I keep coming to the same conclusion. The Ouya is little more than a smartphone masquerading as a home console. This isn\u2019t necessarily a bad thing, it\u2019s just what it is. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>With <a href=\"http://www.kickstarter.com/projects/ouya/ouya-a-new-kind-of-video-game-console\">Ouya\u2019s Kickstarter</a> page going live yesterday, people have been asking me what I thought of the new console. I've had some time to think it over, and I keep coming to the same conclusion. The Ouya is little more than a smartphone masquerading as a home console. This isn\u2019t necessarily a bad thing, it\u2019s just what it is. </p>\n<h3>Hardware</h3>\n<p>Lets start with the hardware. It\u2019s near identical to what\u2019s found in the current generation of smartphones and tablets. Nothing about it is really impressive. It\u2019s CPU, the Terga3, was specifically designed for mobile devices, specifically audio and video. Its a 32-bit multicore ARM architecture with a very small cache. In theory it\u2019s nearly as powerful as a current generation console.The Terga3 however was designed to be very low in power consumption. But since the Ouya is plugged in at all times, it can be pushed harder than a tablet would. How much they\u2019re able to take advantage of this fact and optimize it has yet to be seen. </p>\n<p>What really troubles me though, is the small amount of internal disk space the Ouya has. With only 8GB of internal space, even less when you take into consideration of system files, and no dvd drive in sight, any dream that it could compete with an Xbox, Playstation or Wii is killed. Between high resolution textures, audio and cutscenes, 8GB fills up incredibly fast. Unless you\u2019re an indie title, most modern games take up between 5-10GB. With such a restriction you severely limit the size you want games to be on your platform. Even if you\u2019re able to attach an external hard drive, publishers like EA or Activision wouldn\u2019t force such a requirement to play their games. They have never required extra hardware to run their game on a console before and wouldnt start now. </p>\n<h3>Software</h3>\n<p>What\u2019s most baffling above all, is why it runs Android. If you were serious about \u201cdisrupting\u201d the industry, you don\u2019t half-ass it and choose a mobile OS to power your home entertainment system. You have the freedom to use any variation of Linux you want, and you choose Android? By no means is Android a bad OS. It\u2019s great for tablets and phones, it just hasn\u2019t been proven as viable gaming platform <strong>yet</strong>. And let\u2019s face it, game companies are lazy and greedy. Why would they choose to waste the time to port a full game to another platform, when they can easily make minimal changes to their IOS/Android game? </p>\n<h3>The Zeebo Clone?</h3>\n<p>What everyone seems to also overlook is the <a href=\"http://www.giantbomb.com/zeebo/60-122/\">Zeebo</a>. A few years ago, Zeebo Inc released an inexpensive console to developing countries. The premise of it was to be an affordable home console system. To keep costs low, it\u2019s architecture was very similar to the Ouya. Unlike the Ouya however, they had agreements with EA and Capcom. And while it has reached moderate success, the only games that ever made it to the console were ports of existing mobile games. I can only hope large publishers will take notice of Ouya\u2019s Kickstarter popularity, and the additional money being raised will go to fund deals with them. </p>\n<p>When you look at the big picture, this will be the platform for indie developers and small/casual games. And you know what? I\u2019m perfectly happy with that. I will never see it as a replacement for my Xbox 360, or a Playstation 3, but for $99, its a pretty cheap investment. Not to mention there are mobile-only apps that I would much prefer playing on a big screen instead of a handheld. </p>", 
+      "summary": "With [Ouya\u2019s Kickstarter](http://www.kickstarter.com/projects/ouya/ouya-a-new-kind-of-video-game-console) page going live yesterday, people have been asking me what I thought of the new console. I've had some time to think it over, and I keep coming to the same conclusion. The Ouya is little more than a smartphone masquerading as a home console. This isn\u2019t necessarily a bad thing, it\u2019s just what it is. ", 
+      "content_format": "markdown", 
+      "post_type": "article", 
+      "pub_date": "2012-07-11T08:37:49", 
+      "slug": "angry-birds-hd-my-thoughts-ouya"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": ">People don't like advertising almost as a general rule; Advertising is simply The Way It Is. People who make content learn to like it, because they want to make content, and they also want to eat food and sleep under a roof, and the opportunity to do both at the same time seems like a pretty good idea.\r\n\r\nHonestly, I thought this was a joke at first. It falls way beyond what Kickstarter was meant for- that is, time-limited projects. Either way, its an interesting take on the crowd funding issue. ", 
+      "title": "Penny Arcade Sells Out", 
+      "url": "http://www.kickstarter.com/projects/575109064/penny-arcade-sells-out", 
+      "summary_html": "<blockquote>\n<p>People don't like advertising almost as a general rule; Advertising is simply The Way It Is. People who make content learn to like it, because they want to make content, and they also want to eat food and sleep under a roof, and the opportunity to do both at the same time seems like a pretty good idea.</p>\n</blockquote>\n<p>Honestly, I thought this was a joke at first. It falls way beyond what Kickstarter was meant for- that is, time-limited projects. Either way, its an interesting take on the crowd funding issue. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<blockquote>\n<p>People don't like advertising almost as a general rule; Advertising is simply The Way It Is. People who make content learn to like it, because they want to make content, and they also want to eat food and sleep under a roof, and the opportunity to do both at the same time seems like a pretty good idea.</p>\n</blockquote>\n<p>Honestly, I thought this was a joke at first. It falls way beyond what Kickstarter was meant for- that is, time-limited projects. Either way, its an interesting take on the crowd funding issue. </p>", 
+      "summary": ">People don't like advertising almost as a general rule; Advertising is simply The Way It Is. People who make content learn to like it, because they want to make content, and they also want to eat food and sleep under a roof, and the opportunity to do both at the same time seems like a pretty good idea.\r\n\r\nHonestly, I thought this was a joke at first. It falls way beyond what Kickstarter was meant for- that is, time-limited projects. Either way, its an interesting take on the crowd funding issue. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-11T00:24:31", 
+      "slug": "penny-arcade-sells-out"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "With the success of their Steam Workshop, Valve has found a way to crowd source the approvals process for Steam. ", 
+      "title": "Valve Announces Steam Greenlight", 
+      "url": "http://steamcommunity.com/greenlight/", 
+      "summary_html": "<p>With the success of their Steam Workshop, Valve has found a way to crowd source the approvals process for Steam. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>With the success of their Steam Workshop, Valve has found a way to crowd source the approvals process for Steam. </p>", 
+      "summary": "With the success of their Steam Workshop, Valve has found a way to crowd source the approvals process for Steam. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-09T08:32:55", 
+      "slug": "valve-announces-steam-greenlight"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "If you're computer savvy enough to figure out how to get Linux installed, and setup WINE to get Diablo 3 playable on an unsupported OS, you should be smart enough to realize Blizzard's in-game security, Warden will throw off some false positives on occasion. Blizzard is not going to waste time sorting through thousands of bans to verify you're just playing, and not having multiple VMs open and botting. \r\n\r\nMoral of the story: If you play an online game, dont complain if you get banned or something breaks because you're using **unsupported** hardware/software. ", 
+      "title": "Banned 'Diablo 3' Linux users speak out against being called cheaters", 
+      "url": "http://www.theverge.com/gaming/2012/7/9/3146129/linux-diablo-3-ban", 
+      "summary_html": "<p>If you're computer savvy enough to figure out how to get Linux installed, and setup WINE to get Diablo 3 playable on an unsupported OS, you should be smart enough to realize Blizzard's in-game security, Warden will throw off some false positives on occasion. Blizzard is not going to waste time sorting through thousands of bans to verify you're just playing, and not having multiple VMs open and botting. </p>\n<p>Moral of the story: If you play an online game, dont complain if you get banned or something breaks because you're using <strong>unsupported</strong> hardware/software. </p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>If you're computer savvy enough to figure out how to get Linux installed, and setup WINE to get Diablo 3 playable on an unsupported OS, you should be smart enough to realize Blizzard's in-game security, Warden will throw off some false positives on occasion. Blizzard is not going to waste time sorting through thousands of bans to verify you're just playing, and not having multiple VMs open and botting. </p>\n<p>Moral of the story: If you play an online game, dont complain if you get banned or something breaks because you're using <strong>unsupported</strong> hardware/software. </p>", 
+      "summary": "If you're computer savvy enough to figure out how to get Linux installed, and setup WINE to get Diablo 3 playable on an unsupported OS, you should be smart enough to realize Blizzard's in-game security, Warden will throw off some false positives on occasion. Blizzard is not going to waste time sorting through thousands of bans to verify you're just playing, and not having multiple VMs open and botting. \r\n\r\nMoral of the story: If you play an online game, dont complain if you get banned or something breaks because you're using **unsupported** hardware/software. ", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-09T00:22:49", 
+      "slug": "banned-diablo-3-linux-users-speak-out-against-bein"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": ">The problem \u2014 really the only problem, but a big one nonetheless \u2014 is they couldn\u2019t ever find a way to make those numbers grow. Nothing they did worked, and Rosedale doubts that even early Facebook integration would have helped.\r\n\r\nRight, Second Life didn't Fail.", 
+      "title": "Second Life Didn\u2019t Fail", 
+      "url": "http://pandodaily.com/2012/07/06/philip-rosedale-the-media-is-wrong-secondlife-didnt-fail/", 
+      "summary_html": "<blockquote>\n<p>The problem \u2014 really the only problem, but a big one nonetheless \u2014 is they couldn\u2019t ever find a way to make those numbers grow. Nothing they did worked, and Rosedale doubts that even early Facebook integration would have helped.</p>\n</blockquote>\n<p>Right, Second Life didn't Fail.</p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<blockquote>\n<p>The problem \u2014 really the only problem, but a big one nonetheless \u2014 is they couldn\u2019t ever find a way to make those numbers grow. Nothing they did worked, and Rosedale doubts that even early Facebook integration would have helped.</p>\n</blockquote>\n<p>Right, Second Life didn't Fail.</p>", 
+      "summary": ">The problem \u2014 really the only problem, but a big one nonetheless \u2014 is they couldn\u2019t ever find a way to make those numbers grow. Nothing they did worked, and Rosedale doubts that even early Facebook integration would have helped.\r\n\r\nRight, Second Life didn't Fail.", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-07T10:46:40", 
+      "slug": "secondlife-didnt-fail"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "replica.entry", 
+    "fields": {
+      "body": "Taylor Cocke finds the promise inside the deeply flawed Hydrophobia in this Joystiq story", 
+      "title": "Hydrophobia and the fearless mingling of ideas", 
+      "url": "http://www.joystiq.com/2012/06/28/silver-lining-hydrophobia-and-the-fearless-mingling-of-ideas/", 
+      "summary_html": "<p>Taylor Cocke finds the promise inside the deeply flawed Hydrophobia in this Joystiq story</p>", 
+      "image": null, 
+      "author": 1, 
+      "is_active": true, 
+      "body_html": "<p>Taylor Cocke finds the promise inside the deeply flawed Hydrophobia in this Joystiq story</p>", 
+      "summary": "Taylor Cocke finds the promise inside the deeply flawed Hydrophobia in this Joystiq story", 
+      "content_format": "markdown", 
+      "post_type": "linked", 
+      "pub_date": "2012-07-02T16:59:43", 
+      "slug": "hydrophobia-and-fearless-mingling-ideas"
+    }
+  }
+]

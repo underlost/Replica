@@ -1,0 +1,201 @@
+{% extends 'dashboard/base.html' %}
+{% load replicant %}{% load humanize %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<section id="greeting">
+			<ul class="list-inline">
+			<li class="visible-desktop"><Strong>Welcome back,</Strong> {{ user }}</span></li>
+			<li><a href="{% url 'replica-add' %}"><i class="glyphicon glyphicon-pencil"></i> New Entry</a></li>
+			<li><i class="glyphicon glyphicon-search"></i> Search</li>
+			</ul>
+		</section>
+	</div>
+</div><!-- row -->
+	
+<div class="row">
+	<div class="col-md-5">
+		<section id="today">
+			<h4><i class="glyphicon glyphicon-time"></i> {% now "g:i" %} {% now "a" %} / {% now "l / N j / Y" %}</h4>
+			<div class="data">
+				<canvas id="posts-by-day" height="200" width="350"></canvas>
+				
+				<p>Last 7 days</p>
+
+			</div>
+		</section>
+	</div>
+	
+	<div class="col-md-7">
+		<section id="new-idea">			
+		<form action="" id="create-idea" method="post">{% csrf_token %}
+			<div class="row">
+				<div class="col-xs-11 col-lg-11">
+					<input class="form-control" id="id_title" maxlength="300" name="title" placeholder="New Idea" type="text" value="" />
+				</div>
+				<div class="col-xs-1 col-lg-1">
+				<input type="submit" class="btn pull-right" value="Save">
+				</div>
+			</div>
+			{{form.body.errors}}
+			{{form.body}}
+			
+			<div class="hidden">
+				{{form.summary}}
+				{{form.url}}
+				{{form.post_type}}
+				{{form.content_format}}
+				{% for radio in form.is_active %}
+				<label class="radio inline">{{ radio }}</label>
+				{% endfor %}
+			</div>
+		</form>
+		</section>
+	</div>
+</div><!-- row -->
+	
+<div class="row">		
+	<div class="col-md-6">
+		<div class="row">
+		
+			<div class="col-md-12">
+			<section id="ideas" class="entries">		
+				<h4><i class="glyphicon glyphicon-pencil"></i> Ideas</h4>
+				<ul class="list-unstyled">
+				{% for idea in ideas %}
+					<li>
+						<a class="pull-right preview orange" href="{{ idea.get_absolute_url }}">Preview</a>
+						<a href="{% url 'replica-edit' idea.id %}">{{ idea.title }}</a>
+					</li>
+				{% empty %}
+					<li>No ideas yet.</li>	
+				{% endfor %}
+				</ul>
+			</section>
+			</div><!-- span6 -->
+		
+			<div class="col-md-12">	
+			<section id="published" class="entries">				
+				<h4><i class="glyphicon glyphicon-saved"></i> Recently Published</h4>
+				<ul class="list-unstyled">
+				{% for entry in published|slice:":5" %}
+					<li>
+						<h5><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h5>
+						<a class="pull-right green" href="{% url 'replica-edit' entry.id %}" class="green">edit</a>
+						<time class="green" datetime="{{ entry.pub_date|date:"F jS, Y" }}">{{ entry.pub_date|naturaltime }}</time>
+					</li>
+				{% empty %}
+					<li>Nothing published yet.</li>
+				{% endfor %}
+				</ul>
+			</section>
+			</div><!-- span6 -->
+	
+		</div><!-- row -->
+	</div><!-- span6 -->
+	
+	<div class="col-md-6">
+		<div class="row">
+			<div class="col-md-6">	
+			<section class="stats">
+				<ul class="list-unstyled">
+					<li><span class="green">{{ published|length }}</span> Published</li>
+					<li><span class="blue">{{ upcoming|length }}</span> Scheduled Posts</li>
+					<li><span class="orange">{{ ideas|length }}</span> Ideas </li>
+				</ul>			
+			</section>
+			</div><!-- scol-md-6 -->
+			<div class="col-md-6">	
+			<section class="stats">
+				<ul class="list-unstyled">
+					<li><span class="red">{{ media|length }}</span> Media upload</li>
+					<li><span class="blue">{{ pages|length }}</span> Pages</li>
+					<li><span class="purple">0</span> Comments</li>
+				</ul>			
+			</section>
+			</div><!-- col-md-6 -->
+		</div><!-- row -->
+		
+		<div class="row">
+		<div class="col-md-12">
+			<section id="pages">
+				<h4><i class="glyphicon glyphicon-picture"></i> Media</h4>
+				
+				<ul class="media-list">
+					{% for object in media %}
+				  <li class="media">
+				  {% if object.thumbnail %}<a class="pull-left" href="#">
+				      <img class="media-object img-rounded" src="{{ object.thumbnail.url }}" alt="{{ object.title }}" height="64" width="64">
+				    </a>{% endif %} 
+				    <div class="media-body">
+				      <h4 class="media-heading">{{ object.title }}</h4>
+				      <p>{{ object.description }}</p>
+				    </div>
+				  </li>
+				  {% empty %}
+				     <li class="media"><div class="media-body">
+				     	 <h4 class="media-heading">None yet.</h4>
+				     </div></li>
+				  {% endfor %}
+				</ul>
+						
+			</section>
+		</div><!-- col-md-12 -->
+		</div><!-- row -->
+		
+		<div class="row">
+		<div class="col-md-12">
+			<section id="pages">
+				<h4><i class="glyphicon glyphicon-file"></i> Pages</h4>
+				<ul class="list-unstyled">
+				{% for page in pages %}
+					<li>
+						<a href="{{ page.url }}">{{ page.title }}</a>
+						<span>{{ page.url }}</span>
+					</li>
+				{% empty %}
+				   	<li>None yet.</li>
+				{% endfor %}
+				</ul>			
+			</section>
+		</div><!-- col-md-12 -->
+		</div><!-- row -->
+	</div><!-- col-md-6 -->
+	
+</div><!-- row -->
+{% endblock %}
+
+{% block javascript %}
+<script src="/static/replica/js/lib/jquery.elastic.js" type="text/javascript"></script>
+<script>$('textarea#id_body').elastic(); $('textarea#id_summary').elastic();</script>
+<script src="/static/replica/js/lib/chart.min.js"></script>
+
+<script>
+		//Posts
+		var barChartData = {
+			labels : [{% for day, count in chart_data.iteritems %}{{day}},{% endfor %}],
+			datasets : [
+				{
+					fillColor : "rgba(150,191,72,0.85)",
+					strokeColor : "rgba(150,191,72,0.95)",
+					scaleLineWidth : 1,
+					data : [{% for day, count in chart_data.iteritems %}{{count}},{% endfor %}]
+				},
+			]
+
+		}
+		
+		var bar1 = new Chart(document.getElementById("posts-by-day").getContext("2d")).Bar(barChartData, {
+		    scaleOverride : true,
+		    scaleSteps : 7,
+		    scaleStepWidth :1,
+		    scaleStartValue : 0,
+		    scaleFontColor : "#aaa",
+		});
+			
+</script>
+
+{% endblock %}

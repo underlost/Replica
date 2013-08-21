@@ -1,0 +1,10 @@
+<ul class="list-unstyled">
+{% for object in objects %}
+<li id="{{ object.slug }}" class="entry">
+	<a class="entry-title" href="{% url 'replica-edit' object.id %}">{{ object.title }}</a>
+	<small class="{{ color }}">{{ object.pub_date|date:"l, F j, Y" }}</small>
+</li>
+{% empty %}
+	<li class="entry">No posts found.</li>
+{% endfor %}
+</ul>

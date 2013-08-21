@@ -1,0 +1,26 @@
+{% extends 'base.html' %}{% load replicant %}
+
+{% block title %}Featured | {% endblock %}
+{% block page %}features{% endblock %}
+
+{% block content %}
+
+{% for object in object_list %}
+<div id="feature-{{ object.id }}" class="feature-item" href="" style="background-image: url('http://alifewellplayed.com/static/img/features/feat_{{ object.id }}.jpg')">
+  <div class="feature-details">
+    <div class="feature-description">
+      <h3><a href="">{{ object.title }}</a> {{ object.pub_date|date:"F jS, Y" }}</h3>
+      <p>{{ object.description_html|safe }}</p>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+
+
+
+
+http://alifewellplayed.com/static/img/features/feat_{{ object.id }}.jpg

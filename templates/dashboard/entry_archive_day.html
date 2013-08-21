@@ -1,0 +1,67 @@
+{% extends 'dashboard/base.html' %}
+{% load replicant %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block content %}{% load replicant %}{% load dash %}
+<div class="row">
+
+<div class="col-md-5">
+	<section>
+		<h4>Scheduled Posts</h4>
+		{% render_upcoming 100 %}
+	</section>
+	
+	<section>
+		<h4>Ideas</h4>
+		{% render_ideas 100 %}
+	</section>
+	
+	<section class="browse-by-month">
+		<h4>Browse by month</h4>
+		{% render_dashboard_months %}
+	</section>
+</div>
+
+<div class="col-md-7">
+	<section id="latest-entries">			
+		<h4>Recently Published</h4>
+		{% for object in object_list %}
+		
+			{% ifchanged object.pub_date.day %}
+			<div class="date-container">{{ object.pub_date|date:"l, F jS Y" }}</div>
+			{% endifchanged %}
+		
+			<div class="entry">
+				<h3><a href="{% url 'replica-edit' object.id %}">{{ object.title }}</a></h3>				
+				<div class="entry-content">
+				{% if object.summary %}{{ object.summary_html|safe }}{% else %}{{ object.body_html|safe }}{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+		
+		{% if is_paginated %}
+		<ul class="pagination">
+	        {% if page_obj.has_previous %}
+	            <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+	        {% else %}
+	        	<li class="disabled"><a href="#">&laquo;</a></li>  
+	        {% endif %}
+	
+	        {% for i in paginator.page_range %}
+	        	<li><a href="?page={{i}}">{{i}}</a></li>
+	        {% endfor %}
+	        
+	        {% if page_obj.has_next %}
+	            <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+	        {% else %}
+	        	<li class="disabled"><a href="#">&raquo;</a></li>   
+	        {% endif %}
+		</ul>
+		{% endif %}
+
+	</section>
+</div>
+
+</div><!-- row -->
+{% endblock %}

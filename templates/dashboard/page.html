@@ -1,0 +1,59 @@
+{% extends 'dashboard/base.html' %}
+{% load replicant %}
+
+{% block page %}pages dashboard create{% endblock %}
+
+{% block content %}
+<div class="row">
+<form method="POST" action="" id="add_page_form" class="wide">{% csrf_token %}
+
+	{% for field in form %}
+	        <div class="fieldWrapper">
+	            {{ field.errors }}
+	        </div>
+	    {% endfor %}
+
+	<div class="span12">
+		<section id="create-title">
+		{{form.title}}
+		</section>
+	</div>
+
+	<div class="span8">
+	<section id="create">
+
+		<h4>Page Description</h4>
+		{{form.description.errors}}
+		{{form.description}}
+		
+		<h4>Content</h4>
+		{{form.content.errors}}
+		{{form.content}}
+
+	  <p class="submit"><input type="submit" class="btn" value="Save"></p>
+	</section>
+	</div><!-- span8 -->
+
+	<div class="span4">
+		<section>
+		<fieldset class="settings">
+					
+			<h2>Settings</h2>
+						
+			<ul class="unstyled">
+				<li><div class="input-prepend"><span class="add-on">url</span>{{form.url}}</div></li>
+				<li><div class="input-prepend"><span class="add-on">Template</span>{{form.template_name}}</div>
+				<span class="help-block">{{ form.template_name.help_text }}</span></li>
+				<li>{{form.content_format}} <span class="help-inline">Markup</span></li>
+				<li>{{form.sites}} <span class="help-inline">Sites</span></li>
+				<li><label class="checkbox">{{form.is_active}} Make Live?</label></li>
+				<li><label class="checkbox">{{form.enable_comments}} Enable comments?</label></li>
+				<li><label class="checkbox">{{form.registration_required}} Registration required?</label></li>
+			</ul>
+		</fieldset>		
+	</section>
+	</div><!-- span4 -->
+
+</form>
+</div>
+{% endblock %}
