@@ -1,0 +1,10 @@
+<ul class="list-unstyled replica-panel-list" id="topic-list">{% load humanize %}
+{% for object in objects %}
+<li id="{{ object.slug }}">
+	<a class="entry-title" href="{% url 'Pulse:EntriesByTopic' object.slug %}">{{ object.title }}</a> &bull; {{ object.entry_count }} posts<br />
+	<small class="{{ color }}">Created: {{ object.pub_date|date:"l, F j, Y" }}</small>
+</li>
+{% empty %}
+	<li class="TopicItem">You haven't created any topics.</li>
+{% endfor %}
+</ul>

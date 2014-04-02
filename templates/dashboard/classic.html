@@ -1,0 +1,117 @@
+{% extends 'replica/dashboard/base.html' %}
+
+{% block page %}create dashboard{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="/{{STATIC_URL}}replica/css/datetimepicker.css" type="text/css" media="screen" />
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<form method="POST" action="" id="create-entry">
+
+	<div class="col-md-12">
+		<section id="create-title" class="ReplicaPanel">
+		{{form.title}}
+		</section>
+	</div>
+
+	<div class="col-md-8">
+	<section id="create" class="ReplicaPanel">	
+										
+		<h4>Deck</h4>
+		{{form.deck.errors}}
+		{{form.deck}}
+		<h4>Body</h4>
+		{% if form.body.errors %}
+		    <div class="alert alert-danger">
+		    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		    <ul class="list-unstyled">
+		    {% for error in form.body.errors %}
+		        <li><strong>{{ error|escape }}</strong></li>
+		    {% endfor %}
+		    </ul></div>
+		{% endif %}
+		<div id="BodyTextWrapper">{{form.body}}</div>
+			
+	</section>
+	</div><!-- span8 -->
+
+	<div class="col-md-4">
+		<section class="ReplicaPanel">
+			<h4>Post Status</h4>
+						
+			<div class="form-group">
+			    <label for="datetimepicker" class="sr-only">Date</label>
+				<div class="input-group">
+			 		<span class="input-group-addon">Publish on</span>
+			  		{{form.pub_date}}
+				</div>
+			</div>
+			
+			{% for radio in form.is_active %}
+			<label class="radio inline">{{ radio }}</label>
+			{% endfor %}
+			
+		</section>
+		
+		<section class="ReplicaPanel">
+			<h4>Settings</h4>
+			<fieldset class="settings">
+							
+			<ul class="list-unstyled">
+							
+				<li><div class="input-group">
+				  <span class="input-group-addon">url</span>
+				  {{form.url}}
+				</div></li>
+				
+				<li>{{form.topic}}</li>
+				
+				<li>{{form.post_type}} <span class="help-inline">Post Type</span></li>
+				<li>{{form.image}} <span class="help-inline">Optional Image</span></li>
+				<li>{{form.content_format}} <span class="help-inline">Markup</span></li>
+
+			</ul>
+			
+			<div class="controls">
+			{% if adding %}
+				<input type="submit" class="btn btn-success" value="Save">
+			{% else %}
+				<input type="submit" class="btn btn-success" value="Edit">
+				<a class="btn btn-info" href="{% url 'Replica:DraftsForEntry' entry.guid %}">Drafts</a>
+				<a class="btn btn-danger pull-right" href="{% url 'Replica:DeleteEntry' entry.guid %}">Delete</a>
+			{% endif %}
+			</div>
+			
+			</fieldset>
+		
+		<p>You can also drag this handy {% include "replica/includes/_bookmarklet.html" %} up to your toolbar.</p>
+		
+	</section>
+	</div><!-- span4 -->
+
+{% csrf_token %}
+</form>
+</div><!-- row -->
+
+{% endblock %}
+
+{% block javascript %}
+<script src="{{STATIC_URL}}replica/js/lib/jquery.autosize.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/markdown.js"></script>
+<script src="{{STATIC_URL}}replica/js/lib/bootstrap-markdown.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script>$(document).ready(function(){$('textarea').autosize();});
+
+$('#datetimepicker').datetimepicker({
+    weekStart: 1,
+    todayBtn:  1,
+	autoclose: 1,
+	todayHighlight: 1,
+	startView: 2,
+	forceParse: 0,
+    showMeridian: 1
+});
+
+</script>
+{% endblock %}

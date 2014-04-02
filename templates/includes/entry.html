@@ -1,0 +1,34 @@
+{% load core_tags %}
+<article class="{{ object.post_type.slug }} entry layout-single-column" id="entry-{{ object.id }}">
+	<header class="entry-head">
+		<div class="entry-meta">
+			{% ifchanged object.pub_date.day %}
+			<time datetime="{{ object.pub_date|date:"Y-m-d" }}" class="datetime">{{ object.pub_date|date:"l, F jS Y" }}</time>
+			{% endifchanged %}
+		</div>
+		{% if object.url %}
+		<h3><a href="{{ object.url|safe }}" title="{{ object.title|safe }}">{{ object.title|safe }}</a>
+		<span class="linked-list-permalink"><a href="{{ object.get_absolute_url }}" rel="bookmark" class="glyph">&#8734;</a></span></h3>
+		{% else %}
+		<h2><a href="{{ object.get_absolute_url }}" title="{{ object.title|safe }}" rel="bookmark">{{ object.title|safe }}</a></h2>
+		{% endif %}
+	</header>
+	<section class="entry-body {{ object.post_type.slug|colorize }}">
+	{% if object.deck and not detailed %}
+		<p class="lead">{{ object.deck_html|safe }}</p>
+	{% elif detailed  %}
+		<p class="lead">{{ object.deck_html|safe }}</p>
+		{{ object.body_html|safe }}
+	{% else %}
+		{{ object.body_html|safe }}
+	{% endif %}
+	</section>
+	<footer class="entry-footer">
+		{% if object.topic.all %}<span class="topic-list {{ object.post_type.slug|colorize }}">
+			{% for topic in object.topic.all %}
+			{% if not forloop.first %} / {% endif %}
+			<a href="{% url 'Pulse:EntriesByTopic' topic.slug %}">{{ topic.title|safe }}</a>
+			{% endfor %}</span>
+		{% endif %}
+	</footer>
+</article>

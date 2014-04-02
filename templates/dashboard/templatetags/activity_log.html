@@ -1,0 +1,19 @@
+<ul id="ActivityLogEntries" class="list-unstyled">
+{% for object in object_list %}
+<li id="{{ object.id }}" class="EntryLog">
+	{% if object.is_addition %}Created {% endif %}
+	{% if object.is_change %}Edited {% endif %}
+	{% if object.is_deletion %}Deleted {% endif %}
+	
+	{{ object.object_repr }} - 
+	
+	{% if object.content_type %}
+	    {{ object.content_type.name }}
+	{% else %}
+	    Unknown content
+	{% endif %}	
+</li>
+{% empty %}
+	<li class="EntryLog">No recent Activity.</li>
+{% endfor %}
+</ul>

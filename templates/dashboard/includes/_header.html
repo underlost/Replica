@@ -1,0 +1,48 @@
+{% load core_tags %}
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+    <div class="wrapper">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".header-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'Replica:Index' %}">Replica</a>
+    </div>
+
+    <nav class="collapse navbar-collapse header-collapse" role="navigation">
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="{% url 'Replica:Index' %}" class="dropdown-toggle" data-toggle="dropdown">
+                Dashboard <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'Replica:Index' %}">Home</a></li>
+                    <li><a href="{{site_url}}">View Site</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li><a href="{% url 'Replica:Topics' %}">Topics</a></li>
+                    <li><a href="{% url 'Replica:Entries' %}">Entries</a></li>
+                    <li><a href="{% url 'Replica:EntryTypes' %}">Entry Types</a></li>
+                    <li><a href="{% url 'Replica:Media' %}">Media</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'Replica:Entries' %}">Entries</a></li>
+            <li {% if adding and editor %}class="active"{% endif %}><a href="{% url 'Replica:NewEntry' %}">New Post</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <img width="16" height="16" src="https://secure.gravatar.com/avatar/{{ user|email_hash }}?s=32&amp;d={{STATIC_URL}}img/gravatar.png">
+                {{ user }} <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="{% url 'Core:AccountSettings' %}">Settings</a></li>
+                    <li><a href="{% url 'Core:password_change' %}">Change password</a></li>
+                    <li><a href="{% url 'Core:logout' %}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+     </nav>
+     </div>
+</header>

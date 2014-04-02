@@ -1,0 +1,54 @@
+{% extends 'replica/dashboard/base.html' %}
+{% load core_tags %}{% load humanize %}{% load dash %}
+
+{% block page %}list dashboard{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+    <section class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-right"><a class="green" href="{% url 'Replica:NewMedia' %}"><span class="glyphicon glyphicon-plus-sign"></span></a></div>
+            <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> All Entries</h4>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for object in object_list %}
+                {% if not object.is_active %}
+                <tr class="warning">
+                {% elif object.pub_date >= now %}
+                <tr class="info">
+                {% else %}
+                <tr>
+                {% endif %}
+                    <td>{{object.id}}</td>
+                    <td><a href="{{object.get_absolute_url}}">{{object.title}}</a></td>
+                    <td>{{ object.pub_date|date:"Y-m-d" }}</td>
+                    <td><a href="{% url 'Replica:EditMedia' object.guid %}">Edit<a/></td>
+                    <td><a href="{% url 'Replica:DeleteMedia' object.guid %}"><span class="glyphicon glyphicon-remove-sign"></span><a/></td>
+                </tr>
+            {% empty %}
+                <tr><td>No media entries to display.</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% if is_paginated %}
+        {% include "replica/dashboard/includes/_pagination.html" %}
+    {% endif %}
+</section>
+</div>
+
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

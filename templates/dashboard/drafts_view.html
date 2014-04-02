@@ -1,48 +1,78 @@
-{% extends 'dashboard/base.html' %}
+{% extends 'replica/dashboard/base.html' %}
 
 {% block page %}create dashboard{% endblock %}
 
 {% block content %}
 
-<section id="create">
-	<form method="POST" action="" id="create-entry" class="wide">
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="#entry" data-toggle="tab">Draft#{{ draft.id }}</a></li>
-		<li><a href="#settings" data-toggle="tab">Settings</a></li>
-		<li><a href="{% url 'replica-drafts' entry.id %}">Version History</a></li>
-	</ul>
-
-	<div id="CreateTabContent" class="tab-content">
-		<div class="tab-pane fade in active" id="entry">
-			<fieldset class="content">				
-				
-				<span class="input-block-level uneditable-input" id="id_title">{{ draft.title }}</span>
-				
-				<h4>Summary</h4>
-				<textarea class="input-block-level" cols="40" id="id_summary" name="summary" rows="10" disabled>{{ draft.summary }}</textarea>
-				
-				<h4>Body</h4>
-				<textarea class="input-block-level" cols="40" id="id_body" name="body" rows="10" disabled>{{ draft.body }}</textarea>
-
-				<a class="btn btn-danger pull-right" href="{% url 'replica-draft-delete' draft.id %}">Delete</a>
-				
-			</fieldset>	
-		</div>
-		
-		<div class="tab-pane fade" id="settings">
-			<fieldset class="settings">
-				<h2>Settings</h2>
-				<ul class="unstyled">
-					<li><div class="input-prepend"><span class="add-on">Last Saved</span><span class="input-xlarge uneditable-input">{{ draft.last_edit }}</span></div></li>
-					<li><div class="input-prepend"><span class="add-on">url</span><span class="input-xlarge uneditable-input">{{ draft.url }}</span></div></li>
-					<li><div class="input-prepend"><span class="add-on">Slug</span><span class="input-xlarge uneditable-input">{{ draft.slug }}</span></div></li>
-					<li><div class="input-prepend"><span class="add-on">Markup</span><span class="input-xlarge uneditable-input">{{ draft.content_format }}</span></div></li>
+<div class="row">
+	<div class="col-md-12">
+	<section class="panel panel-default">
+		<div class="panel-body">
+			<div class="col-md-6">
+				<ol class="breadcrumb panel-breadcrumb">
+					<li><a href="{% url 'Replica:EditEntry' entry.guid %}">Entry</a></li>
+					<li><a href="{% url 'Replica:DraftsForEntry' entry.guid %}">Drafts</a></li>
+					<li class="active">Compare</li>
+				</ol>
+			</div>
+			<div class="col-md-6">
+				<ul class="nav nav-pills panel-pills">
+					<li><a href="#">Restore Draft</a></li>
+					<li><a href="{% url 'Replica:DeleteDraft' entry.guid draft.guid %}">Delete Draft</a></li>
 				</ul>
-			</fieldset>
+			</div>
 		</div>
-				
+	</section>
 	</div>
-	{% csrf_token %}
-	</form>
-</section>
+</div><!-- /row -->
+
+<div class="row">
+
+	<div class="col-md-6">
+		<section id="create" class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<span class="pull-right">(Word Count: {{ entry.body_html|wordcount }})</span>
+					Current Version
+				</h4>
+			</div>
+
+			<div class="panel-body">
+				<h2>{{ entry.title }}</h2>
+				<div class="entry-body">
+					{% if entry.deck %}<p class="lead">{{ entry.deck|safe }}</p>{% endif %}
+					{{ entry.body_html|safe }}
+				</div>
+			</div>
+		</section>
+	</div><!-- span6 -->
+
+	<div class="col-md-6">
+		<section id="create" class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<span class="pull-right">(Word Count: {{ draft.body_html|wordcount }})</span>
+					{{ draft.last_edit|date:"F jS, Y" }}
+				</h4>
+			</div>
+
+			<div class="panel-body">
+				<h2>{{ draft.title }}</h2>
+				<div class="entry-body">
+					{% if draft.deck %}<p class="lead">{{ draft.deck|safe }}</p>{% endif %}
+					{{ draft.body_html|safe }}
+				</div>
+			</div>
+		</section>
+	</div><!-- span6 -->
+</div><!-- row -->
+{% endblock %}
+
+{% block javascript %}
+<script src="{{STATIC_URL}}replica/js/lib/jquery.autosize.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/markdown.js"></script>
+<script src="{{STATIC_URL}}replica/js/lib/bootstrap-markdown.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script>$(document).ready(function(){$('textarea').autosize();});
+</script>
 {% endblock %}

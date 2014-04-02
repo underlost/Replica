@@ -1,0 +1,79 @@
+{% extends 'replica/dashboard/base.html' %}{% load core_tags %}{% load pulser %}
+
+{% block title %}Media | {% endblock %}
+{% block page %}topic dashboard{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="" id="TopicForm" class="DefaultForm">{% csrf_token %}
+<div class="row">
+    {% if not adding %}
+    <div class="col-md-5">
+        <section class="panel panel-default">
+            <img width="auto" height="auto" src="{{media.image.url}}" alt="{{media.title}}">
+        </section>
+    </div><!-- col-md-7 -->
+    {% endif %}
+
+    <div class="col-md-7">
+        <section id="new-topic" class="panel panel-default">
+            <div class="panel-body">
+            <div class="form-group">
+            {{form.title}}
+            </div>
+            </div>
+        </section>
+
+        <section class="panel panel-default">
+            <div class="panel-body">
+            <div class="form-group">
+            {{form.description}}
+            </div>
+            </div>
+        </section>
+
+        <section class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> Upload Image</h4>
+            </div>
+            <div class="panel-body">
+            <div class="form-group" id="TopicImageUpload">
+                {{form.image}}
+            </div>
+            </div>
+        </section>
+
+        <section class="panel panel-default">
+
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> Media Settings</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                <h4>Opional URL</h4>
+                <em>Note: leave the image upload field blank, and enter a url below if you wish to point to an external image.</em>
+
+                <div class="form-group">
+                    <div class="input-group inputURL">
+                        <span class="input-group-addon">url</span>
+                        {{form.url}}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="form-group">
+        {% if adding %}
+        <input type="submit" class="btn btn-success" value="Create Media">
+        {% else %}
+        <input type="submit" class="btn btn-success" value="Edit Media">
+        <a class="btn btn-danger" href="{% url 'Replica:DeleteMedia' media.guid %}">Delete Media</a>
+        {% endif %}
+        </div>
+    </div><!-- col-md-7 -->
+
+</div>
+</form>
+
+{% endblock %}
