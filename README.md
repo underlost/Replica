@@ -16,11 +16,11 @@ Replica is a Django content management system I originally wrote for clients who
 
 ### Getting Started
 
-Using Replica is pretty straight forward.
+At 1.0, I'll have a proper way to install Replica. Until then, it's pretty straight forward:
 
 * Copy the 'replica' (and optional 'core') directory to your apps directory.
-* 'templates' should be placed in your 'templates' directory.
-* The 'replica' directory should remain in tact and placed wherever you serve your static media from.
+* 'templates' contents should be placed in your 'templates' directory. 'Pulse' is the frontend blog portion of Replica, while 'dashboard' is the admin area used to manage content.
+* The 'replica' directory in 'static' should remain in tact and placed wherever you serve your static media from.
 
 
 ### Contribute
