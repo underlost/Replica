@@ -1,7 +1,7 @@
 Replica (Version 0.9.7)
 =======
 
-.. image:: http://i.imgur.com/FrcnCKy.jpg
+![Replica Dashboard](http://i.imgur.com/FrcnCKy.jpg)
 
 Replica is a Django content management system I originally wrote for clients who wanted a simple and straight forward solution for posting updates. Since then, I've been slowly expanding it, and merged it into my own blog, [A Life Well Played](http://alifewellplayed.com/). Because it's still a work in progress, it's recommended you use at your own risk. File and database structure may yet still change. By 1.0 I'll include DB migrations (if needed).
 
@@ -13,7 +13,6 @@ Replica is a Django content management system I originally wrote for clients who
 * Markdown Support. Replica uses a simple markdown editor which even allows you to preview content with a click of a button.
 * Responsive. The Dashboard is mobile friendly, in both reviewing and publishing new content.
 * Charts! Powered by Charts.js, charts are generated on the fly to see posting history.
-
 
 ### Getting Started
 
