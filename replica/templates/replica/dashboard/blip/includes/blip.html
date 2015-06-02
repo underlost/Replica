@@ -1,0 +1,7 @@
+<li class="list-group-item replica-item">{% load humanize %}
+    <div class="blip-content">{{object.body_html|safe}}</div>
+    <div class="meta">
+        <span class="gray small"><a class="gray" href="{% url 'Replica:Blip:Blip' object.guid %}"><i class="fa fa-clock-o"></i> {{ object.pub_date|naturaltime }}</a></span>
+        {% if object.timeline %}<span class="gray small"><a href="{% url 'Replica:Blip:Timeline' object.timeline.slug %}"><i class="fa fa-folder"></i> {{object.timeline}}</a></span>{% endif %}
+    </div>
+</li>

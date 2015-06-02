@@ -1,0 +1,142 @@
+{% extends "replica/dashboard/base.html" %}
+{% load core_tags %}{% load humanize %}{% load dash %}
+{% block page %}nano{% endblock %}
+
+{% block css %}
+<style type="text/css">
+     .CodeMirror {
+        border: 1px solid #FFF;
+        height: auto;
+      }
+	.CodeMirror pre.CodeMirror-placeholder { color: #999; }
+</style>
+{% endblock %}
+
+{% block content %}
+<form method="POST" enctype="multipart/form-data" action="" id="EntryForm" class="DefaultForm">{% csrf_token %}
+<section id="create">
+
+	<fieldset class="NanoEntry">
+		{% if form.body.errors %}
+		    <div class="alert alert-danger">
+		    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		    <ul class="list-unstyled">
+		    {% for error in form.body.errors %}
+		        <li><strong>{{ error|escape }}</strong></li>
+		    {% endfor %}
+		    </ul></div>
+		{% endif %}
+
+		{{form.title}}
+		{{form.deck}}
+
+		<div class="md-header btn-toolbar">
+			<div class="markdownify-menu btn-group-vertical" data-target="id_body" role="toolbar">
+				<a class="btn--insert btn btn-default" data-prefix="### " href="javascript:void(0)"><i class="fa fa-header"></i></a>
+				<a class="btn--insert btn btn-default" data-prefix="*" data-suffix="*" href="javascript:void(0)"><i class="fa fa-italic"></i></a>
+				<a class="btn--insert btn btn-default" data-prefix="**" data-suffix="**" href="javascript:void(0)"><i class="fa fa-bold"></i></a>
+				<a class="btn--insert btn btn-default" data-prefix="> " href="javascript:void(0)"><i class="fa fa-quote-left"></i></a>
+				<a class="btn--insert btn btn-default" data-prefix="* " href="javascript:void(0)"><i class="fa fa-list-ul"></i></a>
+				<a class="btn--insert btn btn-default" data-prefix="1. " href="javascript:void(0)"><i class="fa fa-list-ol"></i></a>
+			</div>
+
+			<div class="markdownify-menu btn-group-vertical" data-target="id_body" role="toolbar">
+				<a class="btn--insert btn btn-default" data-type="link" href="javascript:void(0)"><i class="fa fa-link"></i></a>
+				<a class="btn--insert btn btn-default" data-type="video" href="javascript:void(0)"><i class="fa fa-video-camera"></i></a>
+				<a class="btn--insert btn btn-default" data-type="img" href="javascript:void(0)"><i class="fa fa-picture-o"></i></a>
+			</div>
+			<div class="markdownify-menu btn-group-vertical" role="toolbar">
+				<a class="btn--preview btn btn-primary" href="javascript:void(0)" data-target="id_body"><i class="fa fa-eye"></i></a>
+			</div>
+		</div>
+
+		{{form.body}}
+		<div class="id_body-preview"></div>
+	</fieldset>
+
+    <div class="modal fade" id="NanoSettings">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Settings</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group datepicker-wrapper">
+                        <label for="id_pubdate">Publish On</label><br />
+                        {{form.pub_date}}
+                    </div>
+		            <div class="form-group">
+                        <label for="id_image">Featured Image (optional)</label>
+                        {{form.image}}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_post_type">Type of Post</label>
+                        {{form.post_type}}
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group inputURL">
+                            <span class="input-group-addon">url</span>
+                            {{form.url}}
+                        </div>
+                    </div>
+                    <div class="form-group topic-checkbox">
+                        <label for="">Topics</label><br />
+                        {% for checkbox in form.topic %}
+                        <label class="checkbox-inline" for="{{ checkbox.id_for_label }}">{{ checkbox }}</label>
+                        {% if forloop.counter|divisibleby:3 %}<br />{% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <h4>Post Status</h4>
+                        {% for radio in form.is_active %}
+                        <label class="radio-inline" for="{{ radio.id_for_label }}">{{ radio }}</label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</section><!-- /panel -->
+
+<footer class="nano-fixed-bottom">
+
+	<ul class="list-inline pull-right">
+		{% if adding %}
+		<li><input type="submit" class="btn btn-link" value="Save"></li>
+		{% else %}
+		<li><input type="submit" class="btn btn-link" value="Edit"></li>
+		<li><a href="{{ entry.get_absolute_url }}" class=""><i class="fa fa-eye"></i> Preview</a></li>
+		<li><a href="{% url "Replica:DraftsForEntry" entry.guid %}" class="">Drafts</a></li>
+		{% endif %}
+	</ul>
+
+	<p class="nav-text-settings" id="NanoSettingsLink">
+		<a data-toggle="modal" href="#NanoSettings" class="navbar-link"><span class="glyphicon glyphicon-cog"></span> Settings</a>
+	</p>
+
+</footer>
+</form>
+{% endblock %}
+
+{% block javascript %}
+<!-- Javascript -->
+
+<!-- codemirror
+<script src="{{STATIC_URL}}replica/js/lib/codemirror/codemirror.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/codemirror/continuelist.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/codemirror/markdown.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/codemirror/xml.js" type="text/javascript"></script>
+
+-->
+
+<script src="{{STATIC_URL}}replica/js/lib/marked.min.js"></script>
+<script src="{{STATIC_URL}}replica/js/lib/codemirror/codemirror.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/jquery.autosize.min.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}replica/js/lib/jquery.markdownify.js" type="text/javascript"></script>
+<script>
+	$(document).ready(function(){$(".autosize").autosize();});
+	$(function () { $('.markdown').markdownify();})
+</script>
+{% endblock %}

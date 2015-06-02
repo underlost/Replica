@@ -1,0 +1,10 @@
+<ul class="list-group replica-panel-list" id="topic-list">{% load humanize %}
+{% for object in objects %}
+<li class="list-group-item" id="{{ object.slug }}">
+    <a class="entry-title" href="{% url 'Replica:Blip:Timeline' object.slug %}">{{ object.name }}</a><br />
+    <span class="gray">Created {{ object.pub_date|date:"F j, Y" }} &bull; {{ object.item_count }} blips.</span>
+</li>
+{% empty %}
+    <li class="TopicItem">There arent any Timelines made yet.</li>
+{% endfor %}
+</ul>

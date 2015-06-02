@@ -1,0 +1,16 @@
+{% extends 'replica/dashboard/post_archive_base.html' %}
+{% load core_tags %}{% load dash %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block breadcrumb %}
+<h4 class="panel-title replica-panel-title"><i class="fa fa-pencil-square-o fa-fw"></i> Entries</h4>
+{% endblock %}
+
+{% block EntryContent %}
+<ul class="list-group">
+	{% for date in date_list %}
+	<li class="list-group-item"><a href="{{ date|date:"m"|lower }}/">{{ date|date:"F Y" }}</a></li>
+	{% endfor %}
+</ul>
+{% endblock %}

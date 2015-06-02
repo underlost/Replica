@@ -1,0 +1,5 @@
+<span class="replica-user">{% load core_tags %}
+    <a class="gray" href="#">
+        <img width="16" height="16" class="img-circle avatar-small" src="https://secure.gravatar.com/avatar/{{ object.user|email_hash }}?s=32&amp;d={{STATIC_URL}}replica/img/gravatar.png"> {{ object.user }}
+    </a>
+</span>

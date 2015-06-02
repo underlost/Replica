@@ -1,0 +1,27 @@
+{% extends 'replica/dashboard/post_archive_base.html' %}
+{% load core_tags %}{% load dash %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block breadcrumb %}
+<h4 class="panel-title replica-panel-title"><i class="fa fa-pencil-square-o fa-fw"></i> Entries</h4>
+{% endblock %}
+
+{% block EntryContent %}
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Created</th>
+			<th>Topics</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for object in object_list %}
+		{% include "replica/dashboard/includes/_table_entry.html" %}
+	{% empty %}
+	<tr>No entries to display.</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,10 @@
+<ul class="list-group replica-panel-list">{% load humanize %}
+{% for object in objects %}
+<li class="list-group-item" id="{{ object.slug }}">
+	<h3><a class="entry-title" href="{% url 'Replica:EditEntry' object.guid %}">{{ object.title }}</a></h3>
+	<span class="{{ color }}">{{ object.pub_date|date:"l, F j, Y" }} ({{ object.pub_date|naturaltime }})</span>
+</li>
+{% empty %}
+	<li class="list-group-item">Nothing lately.</li>
+{% endfor %}
+</ul>

@@ -1,0 +1,21 @@
+<ul class="list-group replica-panel-list">{% load humanize %}
+{% for object in objects %}
+    <li class="list-group-item">
+        <div class="media">
+            <a class="pull-right" href="{% url 'Replica:EditMedia' object.guid %}">
+                <img class="media-object" width="64" height="auto" src="{{object.thumbnail.url}}" alt="{{object.title}}">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading"><a href="{% url 'Replica:EditMedia' object.guid %}">{{object.title}}</a></h4>
+                {% if object.description %}<p class="gray">{{object.description}}</p>{% endif %}
+                <div class="meta">
+                    <span class="gray"><i class="fa fa-clock-o"></i> {{ object.pub_date|date:"l, F j, Y" }} ({{ object.pub_date|naturaltime }})</span>
+                    <span class="DeleteLink"><a class="red" href="{% url 'Replica:DeleteMedia' object.guid %}"><i class="fa fa-trash"></i> Delete<a/></span>
+                </div>
+            </div>
+        </div>
+    </li>
+{% empty %}
+    <li class="list-group-item">You haven't added any images yet.</li>
+{% endfor %}
+</ul>

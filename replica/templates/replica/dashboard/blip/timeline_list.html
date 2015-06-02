@@ -1,0 +1,42 @@
+{% extends 'replica/dashboard/base_inner.html' %}{% load humanize %}{% load blip_dash %}
+
+{% block title %}Timelines{% endblock %}
+{% block page %}blip dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel panel-default replica-panel">
+            <div class="panel-body">
+                <div class="pull-right"><a class="green" href="{% url 'Replica:Blip:NewTimeline' %}"><i class="fa fa-plus-circle"></i></a></div>
+                <h4 class="panel-title">Timelines</h4>
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <ul class="list-group replica-panel-list" id="timeline-list">
+                {% for object in object_list %}
+                <li class="list-group-item" id="{{ object.slug }}">
+                    <div class="pull-right"><a class="gray enlarge" href="{% url 'Replica:Blip:Timeline' object.slug %}">{{ object.item_count }}</a></div>
+                    <h3><a href="{% url 'Replica:Blip:EditTimeline' object.slug %}">{{ object.name }}</a><small>/{{object.slug}}/</small></h3>
+                    <span class="gray">
+                        {% if object.rev_order %}<i class="fa fa-arrow-circle-up"></i> Newest on <strong>top</strong>
+                        {% else %}<i class="fa fa-arrow-circle-down"></i> Newest on <strong>bottom</strong>{% endif %}
+                    </span>
+                    <div class="meta">
+                        <span class="gray"><i class="fa fa-user"></i> {{ object.user }}</span>
+                        <span class="gray"><i class="fa fa-clock-o"></i> {{ object.pub_date|date:"l, F j, Y" }}</span>
+                        {% if object.is_public %}
+                            <span class="green"><i class="fa fa-eye"></i> Public</span>
+                            {% else %}<span class="orange"><i class="fa fa-eye-slash"></i> Private</span>
+                        {% endif %}
+                    </div>
+                </li>
+                {% empty %}
+                <li class="TimelineItem">There arent any timelines made yet.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</div>
+{% endblock %}

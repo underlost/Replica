@@ -1,0 +1,7 @@
+{{ obj.pub_date|date:"F j, Y" }}
+
+{% for obj in latest_obj %}
+    {{ obj.pub_date|date:"F j, Y" }}
+{% empty %}
+    No Blips.
+{% endfor %}

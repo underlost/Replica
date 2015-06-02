@@ -1,0 +1,16 @@
+{% if not object.is_active %}
+<tr class="warning">
+{% elif object.pub_date >= now %}
+<tr class="info">
+{% else %}
+<tr>
+{% endif %}
+    <td><a href="{% url 'Replica:EditEntry' object.guid %}">{{object.title}}</a></td>
+    <td>{{ object.pub_date|date:"Y/m/d" }}</td>
+    <td>{% if object.topic.all %}
+        {% for topic in object.topic.all %}{% if not forloop.first %}, {% endif %}
+        <small><a href="{% url 'Replica:EntriesByTopic' topic.slug %}">{{ topic.title|safe }}</a></small>
+        {% endfor %}
+    {% endif %}
+    </td>
+</tr>

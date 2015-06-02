@@ -1,0 +1,61 @@
+{% extends 'replica/dashboard/base.html' %}
+{% load core_tags %}{% load dash %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+
+	<div class="col-md-4">
+		<section class="panel panel-default replica-panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fa fa-check-square-o"></i> Scheduled Posts</h4>
+			</div>
+				{% render_upcoming 100 user %}
+		</section>
+
+		<section class="panel panel-default replica-panel">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fa fa-pencil-square-o"></i> Ideas</h4>
+			</div>
+				{% render_ideas 100 user %}
+		</section>
+
+		<section class="panel panel-default replica-panel browse-by-month">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fa fa-calendar"></i> Browse by Month</h4>
+			</div>
+			<div class="panel-body">
+				{% render_dashboard_months user %}
+			</div>
+		</section>
+
+		<section class="panel panel-default replica-panel browse-by-topic">
+			<div class="panel-heading">
+				<h4 class="panel-title"><i class="fa fa-tags"></i> Browse by Topic</h4>
+			</div>
+			{% render_topics 100 user False %}
+		</section>
+
+	</div><!-- col-md-4 -->
+
+	<div class="col-md-8">
+
+		<section class="panel panel-default replica-panel">
+			<div class="panel-body">
+				{% block breadcrumb %}{% endblock %}
+			</div>
+		</section>
+
+		<section id="latest-entries" class="panel panel-default replica-panel">
+			{% block EntryContent %}{% endblock %}
+		</section>
+
+		{% if is_paginated %}
+			{% include "replica/dashboard/includes/_pagination.html" %}
+		{% endif %}
+
+	</div><!-- col-md-8 -->
+
+</div><!-- row -->
+{% endblock %}

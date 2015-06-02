@@ -1,0 +1,80 @@
+{% extends 'replica/dashboard/base.html' %}
+{% load core_tags %}
+
+{% block page %}drafts dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+
+	<div class="col-md-6">
+
+		<section class="panel panel-default replica-panel">
+			<div class="panel-body">
+				<ol class="breadcrumb" id="Replica-breadcrumb">
+					<li><a href="{% url 'Replica:Index' %}"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="{% url 'Replica:Posts' %}"><i class="fa fa-pencil-square-o"></i> Entries</a></li>
+					<li class="active"><i class="fa fa-file-text"></i> Drafts</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="panel panel-default replica-panel">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<span class="pull-right">(Word Count: {{ entry.body_html|wordcount }})</span>
+				{{ entry.pub_date|date:"l, F jS Y" }} (Latest)
+			</h4>
+		</div>
+		<div class="panel-body">
+			<article class="entry">
+				<header class="entry-head">
+					<h2 class="entry-title">{{ entry.title|safe }}</h2>
+				</header>
+				<section class="entry-body">
+					{% if entry.deck %}<p class="lead">{{ entry.deck|safe }}</p>{% endif %}
+					{{ entry.body_html|safe }}
+				</section>
+			</article>
+		</div>
+		<div class="panel-footer">
+			<i class="fa fa-tags"></i>
+
+			{% if entry.topic.all %} In
+				{% for topic in entry.topic.all %}
+				{% if not forloop.first %}, {% endif %}
+				<a href="">{{ topic.title|safe }}</a>
+				{% endfor %}
+			{% else %}
+				No Topics selected.
+			{% endif %}
+
+		</div>
+		</section>
+	</div><!-- span8 -->
+
+	<div class="col-md-6">
+		<section id="published" class="entries panel panel-default replica-panel">
+			<div class="panel-heading">
+				<h4 class="panel-title">History</h4>
+			</div>
+			<ul class="list-group">
+			{% for draft in drafts %}
+				<li class="list-group-item">
+					<div class="pull-right">
+						<a class="red" href="{% url 'Replica:DeleteDraft' entry.guid draft.guid %}">
+							<i class="fa fa-minus-circle"></i></a>
+					</div>
+					<a href="{% url 'Replica:Draft' entry.guid draft.guid %}">
+						{{ draft.last_edit|date:"F jS, Y" }} ({{ draft.last_edit|timesince }} ago)
+					</a>
+				</li>
+			{% empty %}
+				<li class="list-group-item">No previous reversions.</li>
+			{% endfor %}
+			</ul>
+		</section>
+	</div><!-- span4 -->
+
+</div><!-- row -->
+
+{% endblock %}

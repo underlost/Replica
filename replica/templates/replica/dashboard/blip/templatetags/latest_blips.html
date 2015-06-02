@@ -1,0 +1,9 @@
+<ul class="list-group replica-panel-list">
+{% for object in objects %}
+    {% include "replica/dashboard/blip/includes/blip.html" %}
+{% empty %}
+    <li class="list-group-item">
+        No blips yet. Post somethng now?
+    </li>
+{% endfor %}
+</ul>

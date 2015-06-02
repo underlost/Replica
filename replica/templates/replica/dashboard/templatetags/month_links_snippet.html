@@ -1,0 +1,7 @@
+<div class="row">
+  {% for d in dates reversed %}
+    <div class="col-md-6">
+        <a href="{% url 'Replica:Posts' %}{{ d|date:"Y/m" }}/">{{ d|date:"F Y" }}</a>
+    </div>
+  {% endfor %}
+</div>

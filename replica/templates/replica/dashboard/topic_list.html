@@ -1,0 +1,44 @@
+{% extends 'replica/dashboard/base_inner.html' %}
+{% load core_tags %}{% load humanize %}{% load dash %}
+
+{% block page %}list dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+
+    <section class="panel panel-default replica-panel">
+        <div class="panel-body">
+            <div class="pull-right"><a class="green" href="{% url 'Replica:NewTopic' %}"><i class="fa fa-plus-circle"></i></a></div>
+            <h4 class="panel-title replica-panel-title"><i class="fa fa-tags fa-fw"></i> Topics</h4>
+        </div>
+    </section>
+
+    <section class="panel panel-default replica-panel">
+        <ul class="list-group replica-panel-list">
+        {% for object in object_list %}
+            <li class="list-group-item replica-item topic-item">
+                <div class="pull-right"><a class="gray enlarge" href="{% url 'Replica:EntriesByTopic' object.slug %}">{{ object.entry_count }}</a></div>
+                <h3><a href="{% url 'Replica:EditTopic' object.guid %}">{{object.title}}</a><small>/topics/{{object.slug}}/</small></h3>
+                <span class="gray">{{ object.description }}</span>
+                <div class="meta">
+                    {% include "replica/dashboard/includes/_user.html" %}
+                    <span class="gray"><i class="fa fa-clock-o"></i> {{ object.pub_date|date:"l, F j, Y" }}</span>
+                    <span><a class="red" href="{% url 'Replica:DeleteTopic' object.guid %}"><i class="fa fa-trash"></i> Delete<a/></span>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+
+    {% if is_paginated %}
+        {% include "replica/dashboard/includes/_pagination.html" %}
+    {% endif %}
+    </section>
+
+
+</div>
+
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

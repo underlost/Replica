@@ -1,0 +1,49 @@
+{% extends 'replica/dashboard/base_inner.html' %}{% load humanize %}{% load blip_dash %}
+
+{% block title %}{% if adding %}New Blip{% else %}Edit{% endif %}{% endblock %}
+{% block page %}blip dashboard{% endblock %}
+
+{% block css %}
+    {% if not hide_timeline %}
+    <style>
+        #highlight-{{timeline.slug}} li#{{timeline.slug}} {
+            border-left: 5px solid #9fbb58;
+        }
+    </style>
+    {% endif %}
+{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel panel-default replica-panel">
+            <div class="panel-body">
+                <h4 class="panel-title">Blip</h4>
+            </div>
+        </section>
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a href="{% url 'Replica:Blip:EditBlip' object.guid %}"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                </div>
+                <h4 class="panel-title">ID: {{blip.guid}}</a></h4>
+            </div>
+            <div class="panel-body">
+                <form method="POST" action="" id="add_blip_form" class="content-padded">{% csrf_token %}
+                    {{form.body}}
+                    <ul class="table-view">
+                        <li class="table-view-cell">
+                            {{form.is_private}} Hide Blip from public?
+                        </li>
+                    </ul>
+
+                    <button type="submit" class="btn btn-success btn-block">{% if adding %}Post{% else %}Edit{% endif %}</button>
+                    {% if not adding %}<a class="btn btn-danger" href="{% url 'Replica:Blip:DeleteBlip' blip.guid %}"><i class="fa fa-trash"></i> Delete</a>{% endif %}
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

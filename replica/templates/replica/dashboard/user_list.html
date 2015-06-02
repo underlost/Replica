@@ -1,0 +1,45 @@
+{% extends 'replica/dashboard/base_inner.html' %}
+{% load core_tags %}{% load humanize %}{% load dash %}
+
+{% block page %}list dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel panel-default replica-panel">
+            <div class="panel-body">
+                <h4 class="panel-title replica-panel-title"><i class="fa fa-user fa-fw"></i> Users</h4>
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <ul class="list-group replica-panel-list">
+            {% for object in object_list %}
+                <li class="list-group-item replica-user-item">
+                    <div class="media">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle avatar-medium" width="64" height="auto" src="https://secure.gravatar.com/avatar/{{ object.username|email_hash }}?s=96&amp;d={{STATIC_URL}}replica/img/gravatar.png" alt="{{object.title}}">
+                        </a>
+                        <div class="media-body">
+                            <div class="pull-right">{% if object.is_staff %}<span class="label label-primary">Admin</span>{% endif %}</div>
+                            <h4 class="media-heading"><a href="#">{{object.username}}</a></h4>
+                            <p class="gray">{% if object.first_name or object.last_name  %}{{ object.first_name }} {{ object.last_name }}{% endif %}</p>
+                            <div class="meta"></div>
+                        </div>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item">I have no mouth, yet I scream.</li>
+            {% endfor %}
+            </ul>
+
+        {% if is_paginated %}
+            {% include "replica/dashboard/includes/_pagination.html" %}
+        {% endif %}
+        </section>
+</div>
+
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

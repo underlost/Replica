@@ -1,0 +1,55 @@
+{% extends 'replica/dashboard/base_inner.html' %}{% load humanize %}{% load blip_dash %}
+
+{% block title %}{% if adding %}New Timeline{% else %}Editing {{object.name}}{% endif %}{% endblock %}
+{% block page %}blip dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+
+        <section class="panel panel-default replica-panel">
+            <div class="panel-body">
+                <div class="pull-right"><a class="green" href="{% url 'Replica:Blip:NewTimeline' %}"><i class="fa fa-plus-circle"></i></a></div>
+                <h4 class="panel-title">
+                    {% if adding %}New Timeline{% else %}Editing: {{timeline.name}}{% endif %}
+                </h4>
+            </div>
+        </section>
+
+        <form method="POST" action="" id="add_timeline_form" class="content-padded">{% csrf_token %}
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Timeline Name</h4>
+            </div>
+            <div class="panel-body">
+                {{form.name}}
+                {% if not adding %}{{form.slug}}{% endif %}
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Settings</h4>
+            </div>
+
+            <ul class="list-group replica-panel-list">
+                <li class="list-group-item">
+                    {{form.is_public}} Allow timeline visible to public?
+                </li>
+                <li class="list-group-item">
+                    {{form.rev_order}} Reverse order of events (Newest on top).
+                </li>
+            </ul>
+        </section>
+
+        {% if adding %}
+        <button type="submit" class="btn btn-success">Save</button>
+        {% else %}
+        <button type="submit" class="btn btn-success">Edit</button>
+        <a class="btn btn-danger" href="#">Delete</a>
+        {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

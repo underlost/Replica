@@ -1,0 +1,51 @@
+{% extends 'replica/dashboard/base_inner.html' %}
+{% load core_tags %}{% load humanize %}{% load dash %}
+
+{% block page %}list dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel panel-default replica-panel">
+            <div class="panel-body">
+                <h4 class="panel-title">Blip</h4>
+            </div>
+        </section>
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <div class="pull-right">
+                    <a class="green" href="{% url 'Replica:Blip:EditBlip' blip.guid %}"><i class="fa fa-pencil-square-o"></i> Edit</a>
+                </div>
+                <h4 class="panel-title">ID: {{blip.guid}}</a></h4>
+            </div>
+            <div class="panel-body">
+                <div class="blip-content">{{ blip.body_html|safe}}</div>
+            </div>
+            <div class="panel-footer">
+                <div class="meta">
+                    <span class="small gray"><i class="fa fa-user"></i> {{ blip.user }}</span>
+                    <span class="small gray"><i class="fa fa-clock-o"></i> {{ blip.pub_date|naturaltime }}</span>
+                    {% if blip.timeline %}<span class="small gray"><a class="gray" href="{% url 'Replica:Blip:TimelineAll' blip.timeline.slug %}"><i class="fa fa-folder"></i> {{blip.timeline}}</a></span>{% endif %}
+                    <span class="small"><a class="red" href="{% url 'Replica:Blip:DeleteBlip' blip.guid %}"><i class="fa fa-trash"></i> Delete<a/></span>
+                </div>
+            </div>
+        </section>
+        {% if blip.timeline %}
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Most recent blips in <a href="{% url 'Replica:Blip:TimelineAll' blip.timeline.slug %}">{{blip.timeline}}</a></h4>
+            </div>
+            <ul class="list-group replica-panel-list">
+            {% for object in recent_blips %}
+                {% include "replica/dashboard/blip/includes/blip.html" %}
+            {% empty %}
+                <li class="list-group-item">No blips found.</li>
+            {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

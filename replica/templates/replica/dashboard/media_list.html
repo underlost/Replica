@@ -1,0 +1,49 @@
+{% extends 'replica/dashboard/base_inner.html' %}
+{% load core_tags %}{% load humanize %}{% load dash %}
+
+{% block page %}list dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel panel-default replica-panel">
+            <div class="panel-body">
+                <div class="pull-right"><a class="green" href="{% url 'Replica:NewMedia' %}"><i class="fa fa-plus-circle"></i></a></div>
+                <h4 class="panel-title replica-panel-title"><i class="fa fa-picture-o fa-fw"></i> Media</h4>
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <ul class="list-group replica-panel-list">
+            {% for object in object_list %}
+                <li class="list-group-item">
+                    <div class="media">
+                        <a class="pull-right" href="{% url 'Replica:EditMedia' object.guid %}">
+                            <img class="media-object" width="64" height="auto" src="{{object.thumbnail.url}}" alt="{{object.title}}">
+                        </a>
+                        <div class="media-body">
+                            <h4 class="media-heading"><a href="{% url 'Replica:EditMedia' object.guid %}">{{object.title}}</a></h4>
+                            {% if object.description %}<p class="gray">{{object.description}}</p>{% endif %}
+                            <div class="meta">
+                                {% include "replica/dashboard/includes/_user.html" %}
+                                <span class="gray"><i class="fa fa-clock-o"></i> {{ object.pub_date|date:"l, F j, Y" }} ({{ object.pub_date|naturaltime }})</span>
+                                <span class="DeleteLink"><a class="red" href="{% url 'Replica:DeleteMedia' object.guid %}"><i class="fa fa-trash"></i> Delete<a/></span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% empty %}
+                <li class="list-group-item">You haven't added any images yet.</li>
+            {% endfor %}
+            </ul>
+
+        {% if is_paginated %}
+            {% include "replica/dashboard/includes/_pagination.html" %}
+        {% endif %}
+        </section>
+</div>
+
+</div>
+{% endblock %}
+
+{% block javascript %}{% endblock %}

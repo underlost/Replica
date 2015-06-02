@@ -1,0 +1,74 @@
+[
+{
+  "fields": {
+    "user": [
+      "underlost"
+    ],
+    "slug": "article",
+    "title": "Article",
+    "guid": "1"
+  },
+  "model": "pulse.entrytype",
+  "pk": 1
+},
+{
+  "fields": {
+    "user": [
+      "underlost"
+    ],
+    "slug": "linked",
+    "title": "Linked",
+    "guid": "2"
+  },
+  "model": "pulse.entrytype",
+  "pk": 2
+},
+{
+  "fields": {
+    "user": [
+      "underlost"
+    ],
+    "slug": "note",
+    "title": "Note",
+    "guid": "3"
+  },
+  "model": "pulse.entrytype",
+  "pk": 3
+},
+{
+  "fields": {
+    "user": [
+      "underlost"
+    ],
+    "slug": "featured",
+    "title": "Featured",
+    "guid": "4"
+  },
+  "model": "pulse.entrytype",
+  "pk": 4
+},
+{
+  "fields": {
+    "user": [
+      "underlost"
+    ],
+    "slug": "aside",
+    "title": "Aside",
+    "guid": "6ac57b958aaf0e0a"
+  },
+  "model": "pulse.entrytype",
+  "pk": 7
+},
+{
+  "fields": {
+    "user": [
+      "underlost"
+    ],
+    "slug": "page",
+    "title": "Page",
+    "guid": "ad48b2555cbf316b"
+  },
+  "model": "pulse.entrytype",
+  "pk": 8
+}
+]

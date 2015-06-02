@@ -1,0 +1,71 @@
+{% extends 'replica/dashboard/base.html' %}
+{% load core_tags %}{% load dash %}
+
+{% block page %}main dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <section class="panel panel-default replica-panel">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <a class="green" href="#"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <a href="{% url 'Replica:Pages' %}"><i class="gray fa fa-file-text fa-fw"></i> Pages</a>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <a class="green" href="{% url 'Replica:NewEntry' %}"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <a href="{% url 'Replica:Posts' %}"><i class="gray fa fa-pencil-square-o fa-fw"></i> Entries</a>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <a class="green" href="{% url 'Replica:NewTopic' %}"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <a href="{% url 'Replica:Topics' %}"><i class="gray fa fa-tags fa-fw"></i> Topics</a>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <a class="green" href="{% url 'Replica:NewEntryType' %}"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <a href="{% url 'Replica:EntryTypes' %}"><i class="gray fa fa-book fa-fw"></i> Entry Types</a>
+                </li>
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <a class="green" href="{% url 'Replica:NewMedia' %}"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <a href="{% url 'Replica:Media' %}"><i class="gray fa fa-picture-o fa-fw"></i> Media</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'Replica:Users' %}"><i class="gray fa fa-users"></i> Users</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><i class="gray fa fa-cogs"></i> Settings</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><i class="gray fa fa-bar-chart-o"></i> Stats</a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="pull-right">
+                        <a class="green" href="{% url 'Replica:Blip:NewTimeline' %}"><i class="fa fa-plus-circle"></i></a>
+                    </div>
+                    <a href="{% url 'Replica:Blip:Timelines' %}"><i class="fa fa-tasks fa-fw"></i> Timelines</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="{% url 'Replica:Blip:Index' %}"><i class="gray fa fa-bolt fa-fw"></i> Blips</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div class="col-md-8">
+        {% block content-inner %}{% endblock %}
+    </div>
+</div>
+{% endblock %}

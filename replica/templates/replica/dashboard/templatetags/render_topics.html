@@ -1,0 +1,10 @@
+<ul class="list-group replica-panel-list" id="topic-list">{% load humanize %}
+{% for object in objects %}
+<li class="list-group-item" id="{{ object.slug }}">
+	<a class="entry-title" href="{% url 'Replica:EntriesByTopic' object.slug %}">{{ object.title }}</a> &bull; {{ object.entry_count }} posts <br />
+	{% if show_desc %}<span class="gray">{{ object.description }}</span>{% endif %}
+</li>
+{% empty %}
+	<li class="TopicItem">There arent any topics made yet.</li>
+{% endfor %}
+</ul>

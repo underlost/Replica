@@ -1,0 +1,102 @@
+{% extends 'replica/dashboard/base_inner.html' %}{% load core_tags %}{% load pulser %}
+
+{% block title %}Media | {% endblock %}
+{% block page %}topic dashboard{% endblock %}
+
+{% block content-inner %}
+<div class="row">
+	<div class="col-md-12">
+		<section class="panel panel-default replica-panel">
+			<div class="panel-body">
+				<ol class="breadcrumb" id="Replica-breadcrumb">
+					<li><a href="{% url 'Replica:Index' %}"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="{% url 'Replica:Media' %}"><i class="fa fa-file-image-o"></i> Media</a></li>
+					<li class="active">{% if adding %}New Media{% else %}Editing {{media}}{% endif %}</li>
+				</ol>
+			</div>
+		</section>
+	</div>
+</div>
+
+<form method="POST" enctype="multipart/form-data" action="" id="TopicForm" class="DefaultForm">{% csrf_token %}
+<div class="row">
+    <div class="col-md-12">
+        {% if not adding %}
+            <section class="panel panel-default replica-panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> Preview</h4>
+                </div>
+                <div class="panel-body">
+                    <img width="auto" height="auto" src="{{media.image.url}}" alt="{{media.title}}">
+                </div>
+            </section>
+        {% endif %}
+
+        <section id="new-topic" class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">Title</h4>
+            </div>
+            <div class="panel-body">
+            <div class="form-group">
+            {{form.title}}
+            </div>
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> Caption</h4>
+            </div>
+            <div class="panel-body">
+            <div class="form-group">
+            {{form.description}}
+            </div>
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> Upload Image (Optional)</h4>
+            </div>
+            <div class="panel-body">
+            <div class="form-group" id="TopicImageUpload">
+                {{form.image}}
+            </div>
+            </div>
+        </section>
+
+        <section class="panel panel-default replica-panel">
+
+            <div class="panel-heading">
+                <h4 class="panel-title"><span class="glyphicon glyphicon-list"></span> Media Settings</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="form-group">
+                <em>Note: leave the image upload field blank, and enter a url below if you wish to point to an external image. Providing a url will override any uploaded image.</em>
+
+                <div class="form-group">
+                    <label>Opional URL</label>
+                    <div class="input-group inputURL">
+                        <span class="input-group-addon">url</span>
+                        {{form.url}}
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="form-group">
+        {% if adding %}
+        <input type="submit" class="btn btn-success" value="Create Media">
+        {% else %}
+        <input type="submit" class="btn btn-success" value="Edit Media">
+        <a class="btn btn-danger" href="{% url 'Replica:DeleteMedia' media.guid %}"><i class="fa fa-trash"></i> Delete Media</a>
+        {% endif %}
+        </div>
+    </div><!-- col-md-7 -->
+
+</div>
+</form>
+
+{% endblock %}
