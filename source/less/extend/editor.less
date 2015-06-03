@@ -1,0 +1,82 @@
+.nano {
+    margin-top: 65px;
+    width: 100%;
+    padding-bottom: 70px;
+    background: #fff;
+    color: #333;
+
+    header.navbar {
+        opacity: .2;
+        -webkit-transition: all .2s linear;
+		-moz-transition: all .2s linear;
+		transition: all .2s linear;
+    }
+    header.navbar:hover {opacity: 1;}
+
+    .alert {
+        float: right;
+        min-width: 150px;
+        max-width: 200px;
+    }
+
+    .md-preview {
+        margin-top: 15px;
+    }
+
+    .md-header {
+        position: fixed;
+        width: 50px;
+        top: auto;
+        left: auto;
+        margin-right: auto;
+        margin-left: -55px;
+
+        .btn-group-vertical {
+            margin-bottom: 5px;
+
+            .btn-default {border-color: #bdbdbd;}
+        }
+    }
+
+    .NanoEntry {
+        position: relative;
+        width:80%;
+        max-width: 640px;
+        margin: 25px auto;
+        padding-bottom: 4rem;
+        border-bottom: #f2f2f2 2px solid;
+        word-break: break-word;
+        hyphens: auto;
+    }
+
+    .NanoEntry:after {
+        display: block;
+        z-index: 100;
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: #ccc 1px solid;
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -5px;
+        background: #fff;
+        border-radius: 100%;
+        box-shadow: #fff 0 0 0 5px;
+    }
+
+    footer.nano-fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 15px;
+        right: 15px;
+        background-color: rgba(255,255,255,0.9);
+        box-shadow: 0 -10px 10px #fff;
+
+        p {padding-top: 5px;}
+
+        input {padding-top: 2px;}
+
+    }
+
+}

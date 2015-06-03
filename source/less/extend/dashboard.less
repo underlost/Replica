@@ -1,0 +1,199 @@
+.dashboard {
+	padding-top: 60px;
+}
+
+.wrapper {
+	width: 99%;
+	margin: 0 auto;
+}
+
+.red { color: @red;}
+.green { color: @green;}
+.orange {color: @orange;}
+.blue {color: @blue;}
+.purple {color: @purple;}
+.gray {color: @gray-light;}
+
+.RedPanel {
+	color: #f8c8b9;
+	background: #ec663c;
+}
+
+.PurplePanel {
+	color: #e1c6d5;
+	background: #9c4274;
+}
+
+.PurplePanel a {
+	color: #e1c6d5;
+}
+
+.BluePanel {
+	color: #b8e7ee;
+	background: #12b0c5;
+}
+
+.BluePanel a {
+	color: #b8e7ee;
+}
+
+.OrangePanel {
+	color: #ffdaad;
+	background: #ff9618;
+}
+
+.TealPanel {
+	color: #c8ebe8;
+	background: #47bbb3;
+}
+
+.TealPanel a {
+	color: #c8ebe8;
+}
+
+.GreenPanel {
+	color: #e0ecc8;
+	background: #96bf48;
+}
+
+.ReplicaGreyPanel {
+	color: @midgrey;
+	background: @grey;
+}
+
+.navbar-brand {
+	margin-top: 12px;
+	display: block;
+	height: 24px;
+	width: 24px;
+	text-indent: -9999px;
+	background: url('../img/replica_logo.png') center center no-repeat;
+	background-size: 24px 24px;
+	position: absolute;
+	left: 50%;
+}
+
+.navbar {
+	ul.navbar-nav {
+		margin-left: -10px;
+
+		img {
+			border-radius: @panel-border-radius;
+			margin: 0 5px;
+		}
+
+		li > a,
+		li > input.btn-link {
+			text-transform: uppercase;
+			font-size: 13px;
+			font-weight: 400;
+			color: #849199;
+		}
+
+		li > input.btn-link {
+			padding-top: 15px;
+			color: #96bf48;
+		}
+	}
+
+}
+
+.datetime-time {
+	display: block;
+	padding: 5px 0;
+	font-size: 42px;
+	line-height: 36px;
+	font-weight: bold;
+	color: #333;
+}
+
+.datetime-date {
+	display: block;
+	padding: 5px 0;
+	font-size: 22px;
+	line-height: 36px;
+	letter-spacing: 1px;
+	color: @midgrey;
+}
+
+.enlarge {
+	font-size: 150%;
+	font-weight: 600;
+}
+
+.replica-panel {
+	margin-bottom: @grid-gutter-width;
+	border-radius: 3px;
+
+	.replica-panel-title {font-weight: 300;}
+	.panel-heading {background-color: @panel-bg;}
+	.panel-heading > h4 {
+		color: @midgrey;
+		margin-top: 5px;
+		font-size: 13px;
+		font-weight: 300;
+	}
+
+	.list-group li.list-group-item,
+	.panel-heading {
+		border-color: #edece4;
+	}
+}
+
+.replica-panel-list {
+	li {
+		-webkit-transition: all .2s linear;
+		-moz-transition: all .2s linear;
+		transition: all .2s linear;
+
+		h3 {
+			font-size: 18px;
+			font-weight: bold;
+			margin: 5px 0 8px 0;
+
+			small {padding-left: 8px;}
+		}
+
+		.entry-ideas-meta {
+			color: @midgrey;
+			font-size: 17px;
+			font-weight: 300;
+		}
+
+		.meta {margin-top: 6px;}
+		.meta > span {padding-right: 8px;}
+
+	}
+
+	li:hover {
+		background-color: #f6f6f6;
+	}
+}
+
+.NoMargin {
+	margin: 0 0 0 0;
+}
+
+.panel-breadcrumb {
+	padding: 0;
+	margin: 0;
+	background: none;
+}
+
+.panel-pills li a{
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+#Replica-breadcrumb {
+	background: none;
+	font-weight: 300;
+	padding: 0;
+	margin: 0;
+
+	li:first-child {paddng-left: 0;}
+}
+
+ul#topic-list a{ font-weight: 700;}
+
+h2.page-title {font-weight: 100; margin-left: 4px;}
