@@ -1,0 +1,20 @@
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
+
+# Permalinks
+permalink:        pretty
+
+# Server
+source:           source/site
+destination:      _gh_pages
+host:             localhost
+port:             9005
+baseurl:          /
+url:              http://localhost:9005
+encoding:         UTF-8
+
+# Custom vars
+current_version:  1.0.8
+repo:             https://github.com/underlost/Replica
+site:             http://replica.underlost.net

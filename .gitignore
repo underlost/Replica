@@ -24,3 +24,6 @@ nbproject
 *.sublime-project
 *.sublime-workspace
 .idea
+
+_gh_pages
+node_modules

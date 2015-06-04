@@ -3,6 +3,8 @@ Replica (Version 1.0.8)
 
 ![Replica Dashboard](http://i.imgur.com/FrcnCKy.jpg)
 
+*(Project is still currently being setup. May not work properly, or may be ouright broken)*
+
 Replica is a Django content management system I originally wrote for clients who wanted a simple and straight forward solution for posting updates. Since then, I've been slowly expanding and rebuilding it, and merged it into my own blog, [A Life Well Played](http://alifewellplayed.com/). More specifically, it's a a series of apps bundled tightly together:
 
 `Pulse`
